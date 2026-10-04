@@ -58,20 +58,20 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-emerald-100 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-surface-container-lowest text-on-surface rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-shadow-modal border border-surface-container-high animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="sticky top-0 bg-white/95 backdrop-blur-md px-6 py-4 border-b border-gray-100 flex items-center justify-between z-20">
+        <div className="sticky top-0 bg-surface-container-lowest/95 backdrop-blur-md px-6 py-4 border-b border-surface-container-high flex items-center justify-between z-20">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded-md">
+            <span className="font-mono text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded-md border border-surface-container-high">
               {report?.id || 'Report Details'}
             </span>
             {report && <StatusBadge status={report.status} />}
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -81,18 +81,18 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
         <div className="p-6 space-y-6">
           {loading ? (
             <div className="py-16 text-center">
-              <div className="w-10 h-10 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-              <p className="text-sm text-gray-500 font-medium">Fetching report details...</p>
+              <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+              <p className="text-sm text-on-surface-variant font-medium">Fetching report details...</p>
             </div>
           ) : error ? (
-            <div className="p-4 bg-red-50 text-red-700 rounded-xl text-sm text-center">
+            <div className="p-4 bg-error-container text-on-error-container rounded-xl text-sm text-center">
               {error}
             </div>
           ) : report ? (
             <>
               {/* Image banner */}
               {report.image && (
-                <div className="relative rounded-2xl overflow-hidden aspect-video bg-gray-100 border border-gray-100 shadow-inner">
+                <div className="relative rounded-2xl overflow-hidden aspect-video bg-surface-container-low border border-surface-container-high shadow-inner">
                   <img
                     src={report.image}
                     alt={report.wasteType}
@@ -106,8 +106,8 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
               )}
 
               {/* Status progression stepper */}
-              <div className="bg-emerald-50/60 rounded-2xl p-5 border border-emerald-100">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
+              <div className="bg-secondary-container/30 rounded-2xl p-5 border border-secondary-fixed-dim">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
                   Resolution Lifecycle
                 </h4>
                 <ReportTimeline
@@ -118,19 +118,19 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
 
               {/* Key metadata grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                  <MapPin className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high">
+                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs font-semibold text-gray-500 block">Report Location</span>
-                    <p className="text-sm font-medium text-gray-800 mt-0.5">{report.location}</p>
+                    <span className="text-xs font-semibold text-on-surface-variant block">Report Location</span>
+                    <p className="text-sm font-medium text-on-surface mt-0.5">{report.location}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                  <Calendar className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high">
+                  <Calendar className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs font-semibold text-gray-500 block">Date Submitted</span>
-                    <p className="text-sm font-medium text-gray-800 mt-0.5">
+                    <span className="text-xs font-semibold text-on-surface-variant block">Date Submitted</span>
+                    <p className="text-sm font-medium text-on-surface mt-0.5">
                       {new Date(report.date).toLocaleDateString([], {
                         year: 'numeric',
                         month: 'short',
@@ -142,19 +142,19 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                  <User className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high">
+                  <User className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs font-semibold text-gray-500 block">Reporter</span>
-                    <p className="text-sm font-medium text-gray-800 mt-0.5">{report.userName || 'Community Citizen'}</p>
+                    <span className="text-xs font-semibold text-on-surface-variant block">Reporter</span>
+                    <p className="text-sm font-medium text-on-surface mt-0.5">{report.userName || 'Community Citizen'}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                  <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high">
+                  <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs font-semibold text-gray-500 block">Assigned Crew</span>
-                    <p className="text-sm font-medium text-gray-800 mt-0.5">
+                    <span className="text-xs font-semibold text-on-surface-variant block">Assigned Crew</span>
+                    <p className="text-sm font-medium text-on-surface mt-0.5">
                       {report.assignedTo || 'Pending Assignment'}
                     </p>
                   </div>
@@ -162,18 +162,18 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
               </div>
 
               {/* Description */}
-              <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                <span className="text-xs font-semibold text-gray-500 block mb-1">Issue Description</span>
-                <p className="text-sm text-gray-700 leading-relaxed">{report.description}</p>
+              <div className="p-4 rounded-xl bg-surface-container-low border border-surface-container-high">
+                <span className="text-xs font-semibold text-on-surface-variant block mb-1">Issue Description</span>
+                <p className="text-sm text-on-surface leading-relaxed">{report.description}</p>
               </div>
 
               {/* Officer / Quick Status Progression Actions */}
-              <div className="border-t border-gray-100 pt-4">
+              <div className="border-t border-surface-container-high pt-4">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase text-gray-500 tracking-wider">
+                  <span className="text-xs font-bold uppercase text-on-surface-variant tracking-wider">
                     {isAdmin ? 'Officer Status Controls' : 'Quick Progress Simulation'}
                   </span>
-                  {updating && <span className="text-xs text-emerald-600 animate-pulse">Updating status...</span>}
+                  {updating && <span className="text-xs text-primary animate-pulse">Updating status...</span>}
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -184,8 +184,8 @@ export default function ReportModal({ reportId, isOpen, onClose, onStatusUpdated
                       onClick={() => handleStatusChange(st)}
                       className={`py-2 px-3 text-xs font-semibold rounded-xl border transition-all ${
                         report.status.toLowerCase() === st.toLowerCase()
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                          : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-500 hover:bg-emerald-50/50'
+                          ? 'bg-primary text-on-primary border-primary shadow-xs font-bold'
+                          : 'bg-surface-container-low text-on-surface border-surface-container-high hover:border-primary hover:bg-surface-container'
                       }`}
                     >
                       {st}
