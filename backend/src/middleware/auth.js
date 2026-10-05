@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../config/database');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'ecotrack_secret_key_2026';
+const ADMIN_API_KEY = process.env.ADMIN_API_KEY || 'ecotrack-admin';
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -51,7 +52,7 @@ function requireAdmin(req, res, next) {
   if (!req.user || req.user.role !== 'admin') {
     // Check if user is requesting as admin via header or role
     const adminUser = db.users.findById('usr-admin');
-    if (req.headers['x-admin-key'] === 'ecotrack-admin' || req.query.admin === 'true') {
+    if (req.headers['x-admin-key'] === ADMIN_API_KEY || req.query.admin === 'true') {
       const { password, ...safeAdmin } = adminUser;
       req.user = safeAdmin;
       return next();

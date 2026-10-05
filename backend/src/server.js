@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000;
 // Enable CORS for frontend-backend connection (Stitch, Vite, React)
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || '*',
+    origin: process.env.CORS_ORIGIN || '*', // Configurable CORS origin or wildcard for dev
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id', 'x-admin-key']
   })
@@ -58,9 +58,9 @@ app.get('/api', (req, res) => {
         stats: 'GET /api/dashboard/stats'
       },
       reports: {
-        list: 'GET /api/reports',
-        create: 'POST /api/reports',
-        single: 'GET /api/report/:id',
+        list: 'GET /api/reports (or /api/report)',
+        create: 'POST /api/reports (or /api/report)',
+        single: 'GET /api/report/:id (or /api/reports/:id)',
         updateStatus: 'PATCH /api/reports/:id/status'
       },
       collectionPoints: {
@@ -89,8 +89,11 @@ app.get('/api/health', (req, res) => {
 // Register modular REST API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+
+// Support both /api/reports and /api/report for maximum Stitch flexibility
 app.use('/api/reports', reportsRoutes);
 app.use('/api/report', reportsRoutes);
+
 app.use('/api/collection-points', collectionPointsRoutes);
 app.use('/api/eco-tips', ecoTipsRoutes);
 app.use('/api/user', userRoutes);

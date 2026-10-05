@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const db = require('../config/database');
 const { JWT_SECRET, authenticateToken } = require('../middleware/auth');
 
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
+
 // POST /api/auth/signup
 router.post('/signup', async (req, res) => {
   try {
@@ -53,7 +55,7 @@ router.post('/signup', async (req, res) => {
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email, role: newUser.role },
       JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: JWT_EXPIRES_IN }
     );
 
     const { password: _, ...safeUser } = newUser;
@@ -106,7 +108,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(
       { id: user.id, email: user.email, role: user.role },
       JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: JWT_EXPIRES_IN }
     );
 
     const { password: _, ...safeUser } = user;
