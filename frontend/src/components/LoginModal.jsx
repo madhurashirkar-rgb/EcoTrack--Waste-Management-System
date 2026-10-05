@@ -37,8 +37,8 @@ export default function LoginModal({ isOpen, onClose }) {
       setEmail('user@ecotrack.org');
       setPassword('password123');
     } else {
-      setEmail('admin@ecotrack.org');
-      setPassword('admin123');
+      setEmail('admin@ecotrack.com');
+      setPassword('Admin@123');
     }
   };
 
@@ -152,13 +152,24 @@ export default function LoginModal({ isOpen, onClose }) {
                   type="button"
                   onClick={() => setRole('officer')}
                   className={`flex-1 py-1.5 px-2 rounded-md text-xs font-semibold border text-center transition-all ${
-                    email === 'admin@ecotrack.org'
+                    email === 'admin@ecotrack.com' || email === 'admin@ecotrack.org'
                       ? 'bg-primary text-on-primary border-primary'
                       : 'border-outline-variant bg-surface-container-lowest text-on-surface-variant'
                   }`}
                 >
                   🛡️ Sanitation Officer
                 </button>
+              </div>
+
+              <div className="mt-2.5 pt-2 border-t border-surface-container-high/60 flex flex-col gap-1 text-[11px] text-on-surface-variant">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-on-surface">Officer (Admin):</span>
+                  <span className="font-mono bg-surface-container px-1.5 py-0.5 rounded text-primary">admin@ecotrack.com / Admin@123</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-on-surface">Citizen:</span>
+                  <span className="font-mono bg-surface-container px-1.5 py-0.5 rounded text-primary">user@ecotrack.org / password123</span>
+                </div>
               </div>
             </div>
           )}
