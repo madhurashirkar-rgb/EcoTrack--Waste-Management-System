@@ -4,12 +4,11 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage first
     const saved = localStorage.getItem('ecotrack_theme');
     if (saved === 'dark' || saved === 'light' || saved === 'system') {
       return saved;
     }
-    return 'light'; // Default to bright mode
+    return 'light';
   });
 
   const [resolvedTheme, setResolvedTheme] = useState(() => {
