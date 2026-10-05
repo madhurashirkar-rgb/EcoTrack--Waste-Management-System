@@ -10,61 +10,22 @@ const ecoTipsRoutes = require('./routes/ecoTips');
 const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
 
-
+const app = express();
 const PORT = process.env.PORT || 5000;
 
-
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-// 🔑 Add your API key here
-const genAI = new GoogleGenerativeAI("AQ.Ab8RN6LQVgnk42lgSH-vDrTOfW3die0H0zDUvH1DVymL1OqQHg");
-
-// 🚀 Your main API
-app.post("/analyze", async (req, res) => {
-  try {
-    const data = req.body;
-
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    const prompt = `
-    Analyze this business data and give insights:
-    ${JSON.stringify(data)}
-
-    Give:
-    - Sales trend
-    - Growth prediction
-    - Suggestions
-    `;
-
-    const result = await model.generateContent(prompt);
-    const response = result.response.text();
-
-    res.json({ output: response });
-
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
-});
 // Enable CORS for frontend-backend connection (Stitch, Vite, React)
 app.use(
   cors({
-    origin: '*', // Allow any origin for smooth Stitch integration and local dev
+    origin: process.env.CORS_ORIGIN || '*',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id', 'x-admin-key']
   })
 );
 
 // Enable JSON body parsing
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+const bodyLimit = process.env.BODY_LIMIT || '10mb';
+app.use(express.json({ limit: bodyLimit }));
+app.use(express.urlencoded({ extended: true, limit: bodyLimit }));
 
 // Request logger for development transparency
 app.use((req, res, next) => {
@@ -97,9 +58,9 @@ app.get('/api', (req, res) => {
         stats: 'GET /api/dashboard/stats'
       },
       reports: {
-        list: 'GET /api/reports (or /api/report)',
-        create: 'POST /api/reports (or /api/report)',
-        single: 'GET /api/report/:id (or /api/reports/:id)',
+        list: 'GET /api/reports',
+        create: 'POST /api/reports',
+        single: 'GET /api/report/:id',
         updateStatus: 'PATCH /api/reports/:id/status'
       },
       collectionPoints: {
@@ -128,11 +89,8 @@ app.get('/api/health', (req, res) => {
 // Register modular REST API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
-
-// Support both /api/reports and /api/report for maximum Stitch flexibility
 app.use('/api/reports', reportsRoutes);
 app.use('/api/report', reportsRoutes);
-
 app.use('/api/collection-points', collectionPointsRoutes);
 app.use('/api/eco-tips', ecoTipsRoutes);
 app.use('/api/user', userRoutes);
