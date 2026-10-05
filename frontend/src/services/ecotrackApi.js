@@ -1,12 +1,11 @@
 // EcoTrack Stitch Integration Service
-// Copy this file into your Stitch project under 'services/ecotrackApi.js'
-// or embed directly into your components.
+// Reusable service to connect Google Stitch components to the EcoTrack REST API backend.
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 /**
  * Reusable fetch wrapper for EcoTrack API
- * Handles Authorization headers and x-user-id for Stitch prototyping.
+ * Handles Authorization headers and x-user-id for Stitch prototyping and React components.
  */
 export async function ecotrackFetch(endpoint, options = {}) {
   const token = localStorage.getItem('ecotrack_token');
@@ -79,4 +78,11 @@ export const reports = {
     method: 'POST',
     body: JSON.stringify(formData)
   })
+};
+
+export default {
+  ecotrackFetch,
+  auth,
+  getDashboardStats,
+  reports
 };

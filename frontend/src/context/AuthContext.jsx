@@ -4,20 +4,13 @@ import api from '../api/client';
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
+  // Only load user if explicitly stored in localStorage; otherwise user is null (must sign in)
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('ecotrack_user');
-    return saved ? JSON.parse(saved) : {
-      id: 'usr-1',
-      name: 'Alex Johnson',
-      email: 'user@ecotrack.org',
-      mobile: '+1 (555) 234-5678',
-      location: 'Greenwood District, Sector 4',
-      ecoPoints: 350,
-      role: 'citizen'
-    };
+    return saved ? JSON.parse(saved) : null;
   });
 
-  const [token, setToken] = useState(() => localStorage.getItem('ecotrack_token') || 'demo-token');
+  const [token, setToken] = useState(() => localStorage.getItem('ecotrack_token') || null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   // Sync state to localStorage
@@ -29,9 +22,17 @@ export function AuthProvider({ children }) {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem('ecotrack_token', token);
+    } else {
+      localStorage.removeItem('ecotrack_token');
+    }
+  }, [token]);
+
   const login = async (email, password) => {
     try {
-      const data = await api.auth.login(email, password);
+      const data = await api.auth.login(email.trim().toLowerCase(), password);
       setUser(data.user);
       setToken(data.token);
       setIsAuthModalOpen(false);
@@ -43,7 +44,10 @@ export function AuthProvider({ children }) {
 
   const signup = async (userData) => {
     try {
-      const data = await api.auth.signup(userData);
+      const data = await api.auth.signup({
+        ...userData,
+        email: userData.email.trim().toLowerCase()
+      });
       setUser(data.user);
       setToken(data.token);
       setIsAuthModalOpen(false);
@@ -57,35 +61,6 @@ export function AuthProvider({ children }) {
     api.auth.logout();
     setUser(null);
     setToken(null);
-  };
-
-  // Switch between Demo Citizen and Demo Officer for review
-  const switchDemoRole = (role) => {
-    if (role === 'admin') {
-      const adminUser = {
-        id: 'usr-admin',
-        name: 'Officer Davis (Sanitation Lead)',
-        email: 'admin@ecotrack.org',
-        mobile: '+1 (555) 999-0001',
-        location: 'Central Municipal Sanitation Office',
-        ecoPoints: 1200,
-        role: 'admin'
-      };
-      setUser(adminUser);
-      localStorage.setItem('ecotrack_user', JSON.stringify(adminUser));
-    } else {
-      const citizenUser = {
-        id: 'usr-1',
-        name: 'Alex Johnson',
-        email: 'user@ecotrack.org',
-        mobile: '+1 (555) 234-5678',
-        location: 'Greenwood District, Sector 4',
-        ecoPoints: 350,
-        role: 'citizen'
-      };
-      setUser(citizenUser);
-      localStorage.setItem('ecotrack_user', JSON.stringify(citizenUser));
-    }
   };
 
   const refreshProfile = async () => {
@@ -104,11 +79,11 @@ export function AuthProvider({ children }) {
       value={{
         user,
         token,
-        isAdmin: user?.role === 'admin',
+        isAuthenticated: !!user && !!token,
+        isAdmin: user?.role === 'admin' || user?.email === 'admin@ecotrack.com',
         login,
         signup,
         logout,
-        switchDemoRole,
         refreshProfile,
         isAuthModalOpen,
         setIsAuthModalOpen

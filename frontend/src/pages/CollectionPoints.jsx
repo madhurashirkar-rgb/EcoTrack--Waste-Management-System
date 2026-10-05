@@ -1,220 +1,275 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Search, Phone, Clock, Navigation, Check, Filter } from 'lucide-react';
 import api from '../api/client';
 
-const FILTER_TYPES = ['All', 'Plastic', 'Electronic', 'Organic', 'Glass', 'Hazardous'];
-
 export default function CollectionPoints() {
-  const [points, setPoints] = useState([]);
-  const [selectedType, setSelectedType] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [activeCenter, setActiveCenter] = useState(null);
+  const [hubs, setHubs] = useState([]);
+  const [search, setSearch] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedHubDirections, setSelectedHubDirections] = useState(null);
+
+  const defaultHubs = [
+    {
+      id: 'cp-1',
+      name: 'GreenCycle Central Hub',
+      address: '120 Green Way, Sector 4',
+      distance: '0.8 km away',
+      status: 'Open Now',
+      statusColor: 'bg-secondary-container text-primary',
+      rating: 4.9,
+      category: 'Plastic & Cans Dry Waste',
+      materials: ['Plastic Bottles', 'Glass Containers', 'Cardboard'],
+      hours: 'Mon - Sat: 8:00 AM – 7:00 PM',
+      phone: '+1 (555) 234-8901'
+    },
+    {
+      id: 'cp-2',
+      name: 'Metro E-Waste Depot',
+      address: '88 Industrial Parkway',
+      distance: '1.4 km away',
+      status: 'Closes 6 PM',
+      statusColor: 'bg-error-container text-error',
+      rating: 4.8,
+      category: 'E-Waste',
+      materials: ['Lithium Batteries', 'Small Electronics', 'Monitors'],
+      hours: 'Mon - Fri: 9:00 AM – 6:00 PM',
+      phone: '+1 (555) 872-3341'
+    },
+    {
+      id: 'cp-3',
+      name: 'Civic Compost & Organic Drop',
+      address: 'Municipal Gardens, Gate 2',
+      distance: '2.1 km away',
+      status: 'Open 24/7',
+      statusColor: 'bg-secondary-container text-primary',
+      rating: 4.95,
+      category: 'Wet / Organic',
+      materials: ['Food Scraps', 'Yard Trimmings', 'Biodegradable Bags'],
+      hours: 'Self-serve drop kiosk open around the clock',
+      phone: '+1 (555) 302-8877'
+    },
+    {
+      id: 'cp-4',
+      name: 'Pine Street Eco Drop',
+      address: '345 Pine Street, Sector 2',
+      distance: '1.1 km away',
+      status: 'Open Now',
+      statusColor: 'bg-secondary-container text-primary',
+      rating: 4.85,
+      category: 'Plastic & Cans Dry Waste',
+      materials: ['Clean Textiles', 'Cardboard', 'Aluminium Cans'],
+      hours: 'Tue - Sun: 9:00 AM – 5:30 PM',
+      phone: '+1 (555) 412-9902'
+    },
+    {
+      id: 'cp-5',
+      name: 'South Bay Materials Hub',
+      address: '90 Harbor View Road',
+      distance: '3.5 km away',
+      status: 'Open Now',
+      statusColor: 'bg-secondary-container text-primary',
+      rating: 4.7,
+      category: 'Dry Waste',
+      materials: ['Construction Scrap', 'Wood Furniture', 'Scrap Metal'],
+      hours: 'Mon - Fri: 7:30 AM – 4:00 PM',
+      phone: '+1 (555) 670-1122'
+    }
+  ];
 
   useEffect(() => {
-    setLoading(true);
-    api.collectionPoints
-      .getAll(selectedType, searchQuery)
-      .then((res) => {
-        setPoints(res.data || []);
-        if (res.data?.length > 0 && !activeCenter) {
-          setActiveCenter(res.data[0]);
+    async function loadHubs() {
+      try {
+        const res = await api.collectionPoints.getAll(selectedCategory, search);
+        if (res.data && res.data.length > 0) {
+          // Merge with default format
+          const formatted = res.data.map((h, i) => ({
+            id: h.id || `hub-${i}`,
+            name: h.name,
+            address: h.address || h.location || 'Municipal District Hub',
+            distance: h.distance || `${(0.8 + i * 0.6).toFixed(1)} km away`,
+            status: h.status || 'Open Now',
+            statusColor: 'bg-secondary-container text-primary',
+            rating: h.rating || 4.8,
+            category: h.acceptedTypes?.join(' ') || 'Plastic & Cans Dry Waste',
+            materials: h.acceptedTypes || ['Plastic', 'Paper', 'Metals'],
+            hours: h.hours || 'Mon - Sat: 8:00 AM – 7:00 PM',
+            phone: h.phone || '+1 (555) 000-0000'
+          }));
+          setHubs(formatted);
+        } else {
+          setHubs(defaultHubs);
         }
-      })
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
-  }, [selectedType, searchQuery]);
+      } catch {
+        setHubs(defaultHubs);
+      }
+    }
+    loadHubs();
+  }, [selectedCategory, search]);
+
+  const categories = [
+    { id: 'All', label: 'All Hubs' },
+    { id: 'Plastic & Cans', label: 'Plastic & Cans' },
+    { id: 'Dry Waste', label: 'Dry Paper / Cardboard' },
+    { id: 'E-Waste', label: 'E-Waste & Batteries' },
+    { id: 'Wet / Organic', label: 'Compost & Organic' }
+  ];
+
+  const filteredHubs = hubs.filter(hub => {
+    const matchesCategory = selectedCategory === 'All' || hub.category.toLowerCase().includes(selectedCategory.toLowerCase());
+    const matchesSearch = !search || hub.name.toLowerCase().includes(search.toLowerCase()) || hub.address.toLowerCase().includes(search.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-300">
-      
-      {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">
-            Collection Centers
-          </h1>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
-            Locate authorized municipal drop-off points, e-waste depositories, and recycling stations.
-          </p>
-        </div>
-        <div className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 self-start sm:self-auto">
-          🌱 {points.length} Verified Centers
-        </div>
-      </div>
-
-      {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-3xl border border-emerald-100 shadow-xs space-y-3">
-        <div className="relative">
-          <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
-          <input
-            type="text"
-            placeholder="Search by center name, street, or accepted waste..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
-          />
-        </div>
-
-        {/* Filter tags */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
-          <Filter className="w-3.5 h-3.5 text-gray-400 shrink-0 ml-1" />
-          {FILTER_TYPES.map((type) => (
-            <button
-              key={type}
-              onClick={() => setSelectedType(type)}
-              className={`px-3 py-1 rounded-xl text-xs font-semibold shrink-0 transition-all ${
-                selectedType === type
-                  ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200/70'
-              }`}
-            >
-              {type}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Interactive Map Visual Simulator */}
-      <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-inner h-48 sm:h-56 p-4 flex flex-col justify-between">
-        {/* Subtle grid lines styling */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)',
-            backgroundSize: '24px 24px'
-          }}
-        />
-
-        <div className="relative z-10 flex items-center justify-between text-white">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-            <span className="text-xs font-mono uppercase text-emerald-400 font-bold">
-              GPS Radar Active
+    <div className="space-y-6 animate-in fade-in duration-200">
+      {/* Search & Filter Cluster */}
+      <div className="bg-surface-container-lowest rounded-xl p-5 custom-shadow-card border border-surface-container-high space-y-4">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <div className="relative flex-1">
+            <span className="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant text-lg">
+              search
             </span>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search hubs by name, address, or accepted material..."
+              className="w-full h-11 bg-surface-container-low border border-outline-variant rounded-md pl-10 pr-4 text-on-surface text-xs focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+            />
           </div>
-          <span className="text-[11px] text-slate-400">
-            Selected: <strong className="text-white">{activeCenter?.name || 'Nearest Station'}</strong>
-          </span>
-        </div>
 
-        {/* Simulated Map Pins */}
-        <div className="relative z-10 flex items-center justify-around px-4">
-          {points.slice(0, 4).map((pt, idx) => (
-            <button
-              key={pt.id}
-              onClick={() => setActiveCenter(pt)}
-              className={`flex flex-col items-center group transition-transform ${
-                activeCenter?.id === pt.id ? 'scale-110' : 'opacity-80 hover:opacity-100'
-              }`}
-            >
-              <div
-                className={`w-9 h-9 rounded-2xl flex items-center justify-center text-xs font-bold shadow-md transition-all ${
-                  activeCenter?.id === pt.id
-                    ? 'bg-emerald-500 text-white ring-4 ring-emerald-400/40'
-                    : 'bg-slate-800 text-emerald-400 border border-slate-700'
-                }`}
-              >
-                <MapPin className="w-4 h-4" />
-              </div>
-              <span className="text-[10px] text-white mt-1 max-w-[80px] truncate text-center font-medium">
-                {pt.name.split(' ')[0]}
-              </span>
-              <span className="text-[9px] text-emerald-400 font-mono">
-                {pt.distance}
-              </span>
+          <div className="flex items-center gap-2 shrink-0">
+            <button className="h-11 px-4 border border-outline-variant rounded-md text-xs font-semibold text-on-surface flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+              <span className="material-symbols-outlined text-base">tune</span>
+              <span>Radius: 5 km</span>
             </button>
-          ))}
+            <button 
+              onClick={() => alert('Map View active: Pinned 5 municipal drop-off centers within your sector.')}
+              className="h-11 px-4 bg-primary text-on-primary rounded-md text-xs font-semibold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-xs"
+            >
+              <span className="material-symbols-outlined text-base">map</span>
+              <span>Map View</span>
+            </button>
+          </div>
         </div>
 
-        <div className="relative z-10 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800/80 pt-2">
-          <span>Coordinates: Greenwood Metropolitan Sector</span>
-          <span className="text-emerald-400 font-medium">Live Dispatch Route</span>
-        </div>
-      </div>
-
-      {/* Centers Cards Grid */}
-      {loading ? (
-        <div className="py-16 text-center">
-          <div className="w-8 h-8 border-3 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
-          <p className="text-xs text-gray-500">Locating recycling stations...</p>
-        </div>
-      ) : points.length === 0 ? (
-        <div className="p-8 text-center bg-white rounded-3xl border border-gray-100">
-          <p className="text-sm font-semibold text-gray-600">No collection centers found matching your search.</p>
-          <button
-            onClick={() => { setSelectedType('All'); setSearchQuery(''); }}
-            className="mt-2 text-xs font-bold text-emerald-600 hover:underline"
-          >
-            Clear filters
-          </button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {points.map((center) => {
-            const isSelected = activeCenter?.id === center.id;
+        {/* Filter Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {categories.map((cat) => {
+            const isSelected = selectedCategory === cat.id;
             return (
-              <div
-                key={center.id}
-                onClick={() => setActiveCenter(center)}
-                className={`p-5 rounded-3xl border transition-all cursor-pointer bg-white ${
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-3.5 py-1.5 rounded-full text-xs shrink-0 transition-colors ${
                   isSelected
-                    ? 'border-emerald-600 ring-2 ring-emerald-500/20 shadow-md'
-                    : 'border-emerald-100/80 hover:border-emerald-300 hover:shadow-xs'
+                    ? 'bg-primary text-on-primary font-bold'
+                    : 'bg-surface-container text-on-surface-variant hover:text-primary font-semibold'
                 }`}
               >
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div>
-                    <span className="inline-block text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mb-1">
-                      {center.badge || 'Drop-off Station'}
-                    </span>
-                    <h3 className="text-base font-bold text-gray-900 leading-snug">
-                      {center.name}
-                    </h3>
-                  </div>
-
-                  <span className="shrink-0 px-2.5 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-bold flex items-center gap-1">
-                    <Navigation className="w-3 h-3 text-emerald-600" />
-                    {center.distance}
-                  </span>
-                </div>
-
-                <div className="space-y-1.5 text-xs text-gray-600 my-3">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                    <span className="truncate">{center.address}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                    <span>{center.operatingHours}</span>
-                  </div>
-                  {center.phone && (
-                    <div className="flex items-center gap-2">
-                      <Phone className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                      <span>{center.phone}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Accepted Waste Types */}
-                <div className="pt-3 border-t border-gray-100">
-                  <span className="text-[10px] font-bold uppercase text-gray-400 tracking-wider block mb-1.5">
-                    Accepted Materials:
-                  </span>
-                  <div className="flex flex-wrap gap-1">
-                    {center.types.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                {cat.label}
+              </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* Hubs Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredHubs.map((hub) => (
+          <div
+            key={hub.id}
+            className="bg-surface-container-lowest rounded-xl p-5 custom-shadow-card border border-surface-container-high flex flex-col justify-between hover:border-primary transition-all duration-200"
+          >
+            <div>
+              <div className="flex items-start justify-between">
+                <div>
+                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${hub.statusColor}`}>
+                    {hub.status}
+                  </span>
+                  <h3 className="text-base font-bold text-on-surface mt-2">{hub.name}</h3>
+                  <p className="text-xs text-on-surface-variant flex items-center gap-1 mt-1">
+                    <span className="material-symbols-outlined text-sm text-primary">distance</span>
+                    <span>{hub.distance} • {hub.address}</span>
+                  </p>
+                </div>
+                <div className="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-md text-xs font-bold text-on-surface">
+                  <span className="material-symbols-outlined text-sm text-amber-500">star</span>
+                  <span>{hub.rating}</span>
+                </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-surface-container-high">
+                <div className="text-[11px] font-semibold text-on-surface-variant mb-2">Accepts:</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {hub.materials.map((mat, i) => (
+                    <span key={i} className="px-2 py-0.5 rounded bg-surface-container text-[11px] font-medium text-on-surface">
+                      {mat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-3 text-[11px] text-on-surface-variant flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm">schedule</span>
+                <span>{hub.hours}</span>
+              </div>
+            </div>
+
+            <div className="mt-5 pt-3 border-t border-surface-container-high flex items-center gap-2">
+              <button
+                onClick={() => setSelectedHubDirections(hub)}
+                className="flex-1 py-2 rounded-md bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition-all flex items-center justify-center gap-1 shadow-xs"
+              >
+                <span className="material-symbols-outlined text-sm">directions</span>
+                <span>Get Directions</span>
+              </button>
+              <a
+                href={`tel:${hub.phone}`}
+                className="p-2 rounded-md border border-outline-variant hover:bg-surface-container-low text-on-surface-variant transition-colors flex items-center justify-center"
+                title={`Call ${hub.phone}`}
+              >
+                <span className="material-symbols-outlined text-base">call</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Directions Modal */}
+      {selectedHubDirections && (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-surface-container-lowest max-w-md w-full rounded-2xl p-6 custom-shadow-modal border border-surface-container-high space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-surface-container-high">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary text-xl">directions_car</span>
+                <h3 className="font-bold text-sm text-on-surface">{selectedHubDirections.name}</h3>
+              </div>
+              <button 
+                onClick={() => setSelectedHubDirections(null)}
+                className="text-on-surface-variant hover:text-on-surface"
+              >
+                <span className="material-symbols-outlined text-lg">close</span>
+              </button>
+            </div>
+
+            <div className="space-y-2 text-xs text-on-surface-variant">
+              <p><strong className="text-on-surface">Destination:</strong> {selectedHubDirections.address}</p>
+              <p><strong className="text-on-surface">Transit Distance:</strong> {selectedHubDirections.distance}</p>
+              <p><strong className="text-on-surface">Operating Window:</strong> {selectedHubDirections.hours}</p>
+              <div className="p-3 bg-secondary-container/60 rounded-xl text-on-secondary-container border border-secondary-fixed">
+                🌱 Drop off segregated recyclables here to earn up to +50 EcoPoints directly at the kiosk scanner!
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-2 pt-2">
+              <button
+                onClick={() => setSelectedHubDirections(null)}
+                className="px-4 py-2 bg-primary text-on-primary text-xs font-bold rounded-lg hover:bg-primary-container"
+              >
+                Start Navigation (GPS)
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
