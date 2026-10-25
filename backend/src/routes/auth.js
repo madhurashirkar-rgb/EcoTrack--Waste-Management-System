@@ -94,7 +94,7 @@ router.post('/login', async (req, res) => {
     // Look up user by email, supporting both .com and .org for admin
     let user = db.users.findByEmail(normEmail);
     if (!user && (normEmail === 'admin@ecotrack.org' || normEmail === 'admin@ecotrack.com')) {
-      user = db.users.findByEmail('admin@ecotrack.com') || db.users.findById('usr-admin');
+      user = db.users.findByEmail('admin@ecotrack.org') || db.users.findByEmail('admin@ecotrack.com') || db.users.findById('usr-admin');
     }
 
     if (!user) {

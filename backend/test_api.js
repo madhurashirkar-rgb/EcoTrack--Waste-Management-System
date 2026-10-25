@@ -61,7 +61,7 @@ async function test() {
   const adminLogin = await fetch('http://localhost:5000/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'admin@ecotrack.org', password: 'admin123' })
+    body: JSON.stringify({ email: 'admin@ecotrack.org', password: 'admin@123' })
   }).then(r => r.json());
   const adminToken = adminLogin.data?.token;
 

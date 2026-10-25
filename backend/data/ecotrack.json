@@ -25,9 +25,9 @@
     {
       "id": "usr-admin",
       "name": "Officer Davis (Sanitation Lead)",
-      "email": "admin@ecotrack.com",
+      "email": "admin@ecotrack.org",
       "mobile": "+1 (555) 999-0001",
-      "password": "$2a$10$WTsJ7L1lieShIy0IISeyTu5yF2Eo1/l5kM/aDJPXXSeREEk52fzmi",
+      "password": "$2a$10$tHLXNtyWOz1ZXxXTUYvgEOwCRqBfQwv/z9LSF1Y6YEbGDzDXRgrjC",
       "location": "Central Municipal Sanitation Office",
       "ecoPoints": 1200,
       "role": "admin",

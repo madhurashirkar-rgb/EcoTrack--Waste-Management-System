@@ -14,7 +14,7 @@ if (!fs.existsSync(DATA_DIR)) {
 function getInitialData() {
   const salt = bcrypt.genSaltSync(10);
   const userPasswordHash = bcrypt.hashSync('password123', salt);
-  const adminPasswordHash = bcrypt.hashSync('Admin@123', salt);
+  const adminPasswordHash = bcrypt.hashSync('admin@123', salt);
 
   return {
     users: [
@@ -43,7 +43,7 @@ function getInitialData() {
       {
         id: 'usr-admin',
         name: 'Officer Davis (Sanitation Lead)',
-        email: 'admin@ecotrack.com',
+        email: 'admin@ecotrack.org',
         mobile: '+1 (555) 999-0001',
         password: adminPasswordHash,
         location: 'Central Municipal Sanitation Office',
@@ -237,15 +237,15 @@ function loadDatabase() {
     try {
       const data = fs.readFileSync(DB_FILE, 'utf-8');
       dbCache = JSON.parse(data);
-      // Ensure admin@ecotrack.com is present with Admin@123
-      const adminUser = dbCache.users.find((u) => u.email.toLowerCase() === 'admin@ecotrack.com');
+      // Ensure admin@ecotrack.org is present with admin@123
+      const adminUser = dbCache.users.find((u) => u.email.toLowerCase() === 'admin@ecotrack.org' || u.email.toLowerCase() === 'admin@ecotrack.com' || u.id === 'usr-admin');
       const salt = bcrypt.genSaltSync(10);
-      const adminPasswordHash = bcrypt.hashSync('Admin@123', salt);
+      const adminPasswordHash = bcrypt.hashSync('admin@123', salt);
       if (!adminUser) {
         dbCache.users.push({
           id: 'usr-admin',
           name: 'Officer Davis (Sanitation Lead)',
-          email: 'admin@ecotrack.com',
+          email: 'admin@ecotrack.org',
           mobile: '+1 (555) 999-0001',
           password: adminPasswordHash,
           location: 'Central Municipal Sanitation Office',
@@ -255,7 +255,8 @@ function loadDatabase() {
         });
         saveDatabase();
       } else {
-        // Guarantee password matches Admin@123
+        // Guarantee email is admin@ecotrack.org and password matches admin@123
+        adminUser.email = 'admin@ecotrack.org';
         adminUser.password = adminPasswordHash;
         adminUser.role = 'admin';
         saveDatabase();
