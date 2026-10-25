@@ -95,7 +95,7 @@ export default function AdminPanel({ onSelectReport }) {
               Admin Operations Dashboard
             </h1>
             <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl">
-              Logged in as <strong className="text-emerald-400 font-mono">admin@ecotrack.com</strong>.
+              Logged in as <strong className="text-emerald-400 font-mono">{user?.email || 'admin@ecotrack.org'}</strong>.
               Review and dispatch all citizen-submitted waste reports citywide.
             </p>
           </div>

@@ -80,7 +80,7 @@ export function AuthProvider({ children }) {
         user,
         token,
         isAuthenticated: !!user && !!token,
-        isAdmin: user?.role === 'admin' || user?.email === 'admin@ecotrack.com',
+        isAdmin: user?.role === 'admin' || user?.email === 'admin@ecotrack.org' || user?.email === 'admin@ecotrack.com',
         login,
         signup,
         logout,

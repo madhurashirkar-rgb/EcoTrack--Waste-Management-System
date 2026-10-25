@@ -110,7 +110,7 @@ function MainLayout() {
           <div className="flex items-center gap-4 text-xs font-semibold">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-secondary-container text-on-secondary-container rounded-lg border border-secondary-fixed">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-              {isAdmin ? 'Admin Session (admin@ecotrack.com)' : `Citizen Session (${user.name})`}
+              {isAdmin ? `Admin Session (${user?.email || 'admin@ecotrack.org'})` : `Citizen Session (${user?.name || 'Citizen'})`}
             </span>
           </div>
         </div>

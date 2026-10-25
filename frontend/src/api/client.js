@@ -24,7 +24,7 @@ const DEFAULT_USER = {
 const DEFAULT_ADMIN = {
   id: 'usr-admin',
   name: 'Officer Davis (Sanitation Lead)',
-  email: 'admin@ecotrack.com',
+  email: 'admin@ecotrack.org',
   role: 'admin',
   location: 'Central Municipal Sanitation Office',
   ecoPoints: 1200
@@ -36,7 +36,7 @@ function handleOfflineFallback(endpoint, options = {}, originalError = null) {
   // A. Login Fallback
   if (endpoint === '/auth/login' && options.body) {
     try {
-      const { email } = JSON.parse(options.body);
+      const { email, password } = JSON.parse(options.body);
       const isAdm = email.toLowerCase().includes('admin');
       const user = isAdm ? DEFAULT_ADMIN : { ...DEFAULT_USER, email };
       return {
@@ -95,7 +95,7 @@ function handleOfflineFallback(endpoint, options = {}, originalError = null) {
     };
   }
 
-  // D. Generic safe return for other endpoints
+  // D. Generic safe return for other read endpoints
   return {
     success: true,
     data: []
@@ -121,10 +121,11 @@ async function request(endpoint, options = {}) {
       headers
     });
   } catch (netErr) {
+    // If backend is sleeping, down, or CORS blocked, use fallback
     return handleOfflineFallback(endpoint, options, netErr);
   }
 
-  // Check if response is HTML
+  // Check if response is HTML (e.g. Vercel SPA fallback, 404 HTML, or 502 Bad Gateway)
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('application/json')) {
     return handleOfflineFallback(endpoint, options, new Error(`Server returned HTML instead of JSON (${response.status})`));
@@ -148,6 +149,7 @@ async function request(endpoint, options = {}) {
 }
 
 export const api = {
+  // Authentication
   auth: {
     login: async (email, password) => {
       const res = await request('/auth/login', {
@@ -178,10 +180,12 @@ export const api = {
     getMe: () => request('/auth/me')
   },
 
+  // Dashboard
   dashboard: {
     getStats: () => request('/dashboard/stats')
   },
 
+  // Reports
   reports: {
     getAll: (status) => {
       const query = status && status !== 'All' ? `?status=${encodeURIComponent(status)}` : '';
@@ -200,6 +204,7 @@ export const api = {
       })
   },
 
+  // Collection Points
   collectionPoints: {
     getAll: (type, search) => {
       const params = new URLSearchParams();
@@ -211,15 +216,18 @@ export const api = {
     getById: (id) => request(`/collection-points/${id}`)
   },
 
+  // Eco Tips
   ecoTips: {
     getAll: () => request('/eco-tips'),
     getDaily: () => request('/eco-tips/today')
   },
 
+  // User Profile
   user: {
     getProfile: () => request('/user/profile')
   },
 
+  // Admin
   admin: {
     getReports: (status, wasteType) => {
       const params = new URLSearchParams();

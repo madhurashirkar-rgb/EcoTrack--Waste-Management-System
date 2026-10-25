@@ -79,7 +79,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
           {isAdmin ? (
             <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-emerald-400 text-xs font-bold border border-slate-700">
               <Shield className="w-3.5 h-3.5" />
-              <span>admin@ecotrack.com</span>
+              <span>{user?.email || 'admin@ecotrack.org'}</span>
             </div>
           ) : (
             <div 

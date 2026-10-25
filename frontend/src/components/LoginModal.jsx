@@ -37,8 +37,8 @@ export default function LoginModal({ isOpen, onClose }) {
       setEmail('user@ecotrack.org');
       setPassword('password123');
     } else {
-      setEmail('admin@ecotrack.com');
-      setPassword('Admin@123');
+      setEmail('admin@ecotrack.org');
+      setPassword('admin@123');
     }
   };
 
@@ -164,7 +164,7 @@ export default function LoginModal({ isOpen, onClose }) {
               <div className="mt-2.5 pt-2 border-t border-surface-container-high/60 flex flex-col gap-1 text-[11px] text-on-surface-variant">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-on-surface">Officer (Admin):</span>
-                  <span className="font-mono bg-surface-container px-1.5 py-0.5 rounded text-primary">admin@ecotrack.com / Admin@123</span>
+                  <span className="font-mono bg-surface-container px-1.5 py-0.5 rounded text-primary">admin@ecotrack.org / admin@123</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-on-surface">Citizen:</span>
