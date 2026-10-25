@@ -17,7 +17,6 @@ A full-stack, clean, modern, and beginner-friendly waste management web applicat
   - Interactive status progression: **Reported → Assigned → In Progress → Collected**
   - Integrated Officer / Admin operations panel
 - **Stitch Compatibility**:
-  - Full guide provided in [`STITCH_INTEGRATION.md`](./STITCH_INTEGRATION.md)
   - Modular API client supporting both `fetch` and `axios`
 
 ---
@@ -67,4 +66,4 @@ npm run dev
 ## 🔑 Demo Credentials
 
 - **Citizen User**: `user@ecotrack.org` / `password123`
-- **Sanitation Officer (Admin)**: `admin@ecotrack.org` / `admin123`
+- **Sanitation Officer (Admin)**: `admin@ecotrack.org` / `admin@123`
