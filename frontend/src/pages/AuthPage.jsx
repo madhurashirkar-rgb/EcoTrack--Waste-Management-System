@@ -72,8 +72,8 @@ export default function AuthPage() {
 
   const fillAdminCredentials = () => {
     setMode('login');
-    setLoginEmail('admin@ecotrack.com');
-    setLoginPassword('Admin@123');
+    setLoginEmail('admin@ecotrack.org');
+    setLoginPassword('admin@123');
     setError('');
   };
 
@@ -239,8 +239,8 @@ export default function AuthPage() {
                         <Shield className="w-3.5 h-3.5" />
                         <span>Sanitation Admin</span>
                       </div>
-                      <span className="text-[10px] text-on-surface-variant font-mono mt-0.5">admin@ecotrack.com</span>
-                      <span className="text-[10px] text-primary/70 font-mono">Pass: Admin@123</span>
+                      <span className="text-[10px] text-on-surface-variant font-mono mt-0.5">admin@ecotrack.org</span>
+                      <span className="text-[10px] text-primary/70 font-mono">Pass: admin@123</span>
                     </button>
 
                     <button
@@ -269,7 +269,7 @@ export default function AuthPage() {
                         type="email"
                         value={loginEmail}
                         onChange={(e) => setLoginEmail(e.target.value)}
-                        placeholder="e.g. admin@ecotrack.com or your email"
+                        placeholder="e.g. admin@ecotrack.org or your email"
                         required
                         className="w-full h-10 pl-9 pr-3 bg-surface-container-low border border-outline-variant rounded-xl text-xs text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       />
