@@ -1,0 +1,386 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EcoTrack - Municipal Waste Management Portal</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#007bb9",
+            "on-background": "#131b2e",
+            "on-tertiary-container": "#fdfcff",
+            "error": "#ba1a1a",
+            "primary": "#006b2c",
+            "secondary-fixed": "#caead6",
+            "surface-variant": "#dae2fd",
+            "primary-fixed": "#7ffc97",
+            "surface-container-highest": "#dae2fd",
+            "on-surface-variant": "#3e4a3d",
+            "surface-container": "#eaedff",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#005320",
+            "outline-variant": "#bdcaba",
+            "on-primary-fixed": "#002109",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#006e2d",
+            "tertiary-fixed": "#cce5ff",
+            "surface-container-low": "#f2f3ff",
+            "outline": "#6e7b6c",
+            "inverse-on-surface": "#eef0ff",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "secondary-container": "#caead6",
+            "tertiary": "#006194",
+            "secondary-fixed-dim": "#afceba",
+            "background": "#faf8ff",
+            "on-secondary-fixed-variant": "#314d3e",
+            "on-surface": "#131b2e",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#042014",
+            "inverse-surface": "#283044",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#001d31",
+            "on-tertiary-fixed-variant": "#004b73",
+            "secondary": "#486554",
+            "surface-container-high": "#e2e7ff",
+            "surface-dim": "#d2d9f4",
+            "on-primary-container": "#f7fff2",
+            "on-secondary-container": "#4e6b5a",
+            "on-error": "#ffffff",
+            "inverse-primary": "#62df7d",
+            "tertiary-fixed-dim": "#93ccff",
+            "primary-container": "#00873a",
+            "primary-fixed-dim": "#62df7d",
+            "surface": "#faf8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "space-xl": "2rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "display": ["Inter"],
+            "label-md": ["Inter"],
+            "title-md": ["Inter"],
+            "body-md": ["Inter"],
+            "display-mobile": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "title-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-shadow {
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    }
+    .custom-floating-shadow {
+      box-shadow: 0 10px 25px -3px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Desktop Authentication Flow (Linear journey, suppresses top navigation shell) -->
+<main class="min-h-screen flex flex-col lg:flex-row w-full">
+<!-- LEFT PANEL: Brand Showcase / Tactical Hero Area -->
+<div class="relative lg:w-1/2 bg-surface-bright flex flex-col justify-between p-6 sm:p-10 lg:p-14 overflow-hidden border-b lg:border-b-0 lg:border-r border-surface-container-high">
+<!-- Background Ambient Rings & Glows -->
+<div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-secondary-fixed opacity-40 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-primary-fixed opacity-30 blur-3xl pointer-events-none"></div>
+<!-- Top Brand Anchor -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container-lowest p-1 shadow-sm border border-secondary-fixed flex items-center justify-center">
+<img alt="EcoTrack Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XmgoA0_MX-HoEOhXRbBiaoZPOpPUVWqTG1dNtpKtX0s1eLj9loYjgR9rONBa2G3pTYB96v1RAk0swGWJNaISjbly9TkgJ9q129-cWt-R8sTp1KhvSBp40bVk4pWBYvbbOJYobaKKbZcE5mEUy7ERoaOf4nyCOTEZvxeUTFbpce0bXmNlwQ08iMYR8wxt53ubrzsDn43aeIbras29Jtac2OiqU-zSRc2veJeHTe21s-tqa73ppJmLlY6g">
+</div>
+<div>
+<span class="font-title-lg text-title-lg text-primary font-bold tracking-tight">EcoTrack</span>
+<span class="block font-label-sm text-label-sm text-outline">Municipal Portal</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest border border-secondary-fixed text-primary font-label-md text-label-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>Live Sensor Grid</span>
+</div>
+</div>
+<!-- Center Dynamic Graphic & Floating Pills Inspired by Screen 2 -->
+<div class="relative z-10 my-10 lg:my-auto flex flex-col items-center justify-center">
+<!-- Concentric Radial Eco Graphic -->
+<div class="relative flex items-center justify-center w-72 h-72 sm:w-80 sm:h-80">
+<!-- Outer Pulsing Orbit Ring -->
+<div class="absolute inset-0 rounded-full border border-primary-fixed border-dashed animate-[spin_60s_linear_infinite] opacity-60"></div>
+<!-- Second Layer Ring -->
+<div class="absolute inset-6 rounded-full bg-secondary-fixed/40 backdrop-blur-sm border border-secondary-container"></div>
+<!-- Third Glow Ring -->
+<div class="absolute inset-12 rounded-full bg-secondary-container/60 shadow-inner flex items-center justify-center"></div>
+<!-- Central Eco Emblem -->
+<div class="relative z-10 w-24 h-24 rounded-full bg-surface-container-lowest shadow-lg flex items-center justify-center border-2 border-primary-fixed">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<!-- Floating Pill 1: Clean City -->
+<div class="absolute -top-3 left-4 bg-surface-container-lowest border border-outline-variant/40 rounded-full px-3.5 py-1.5 flex items-center gap-2 custom-floating-shadow transition-transform hover:-translate-y-0.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Clean City Zone 4</span>
+</div>
+<!-- Floating Pill 2: Eco Score 92 with Trend -->
+<div class="absolute top-28 -right-4 bg-surface-container-lowest border border-outline-variant/40 rounded-full px-3.5 py-1.5 flex items-center gap-2 custom-floating-shadow transition-transform hover:-translate-y-0.5">
+<span class="material-symbols-outlined text-primary text-base" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Eco Score: 92</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">+4.8%</span>
+</div>
+<!-- Floating Pill 3: 100% Verified Dispatch -->
+<div class="absolute -bottom-3 left-10 bg-surface-container-lowest border border-outline-variant/40 rounded-full px-3.5 py-1.5 flex items-center gap-2 custom-floating-shadow transition-transform hover:-translate-y-0.5">
+<span class="material-symbols-outlined text-primary text-base" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">100% Verified Municipal Dispatch</span>
+</div>
+</div>
+<!-- Hero Headline & Context -->
+<div class="text-center mt-10 max-w-md mx-auto">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">
+            Make Your City <span class="text-primary underline decoration-primary-fixed decoration-4 underline-offset-4">Cleaner</span>
+</h1>
+<p class="font-body-md text-body-md text-outline mt-3 leading-relaxed">
+            Report waste, find collection points, and earn rewards for keeping your community clean.
+          </p>
+</div>
+</div>
+<!-- Bottom Metric & Social Proof Banner -->
+<div class="relative z-10 pt-4">
+<div class="bg-surface-container-lowest/80 backdrop-blur-sm border border-surface-container-high rounded-xl p-4 flex items-center gap-4 custom-shadow">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-medium leading-snug">
+              Over <strong class="text-primary font-bold">12,000+ citizens</strong> actively reporting waste across 18 municipal zones.
+            </p>
+</div>
+<div class="hidden sm:flex -space-x-2 overflow-hidden flex-shrink-0">
+<span class="inline-block h-7 w-7 rounded-full ring-2 ring-surface-container-lowest bg-secondary-fixed flex items-center justify-center font-label-sm text-label-sm text-on-secondary-fixed">JD</span>
+<span class="inline-block h-7 w-7 rounded-full ring-2 ring-surface-container-lowest bg-primary-fixed flex items-center justify-center font-label-sm text-label-sm text-on-primary-fixed">MR</span>
+<span class="inline-block h-7 w-7 rounded-full ring-2 ring-surface-container-lowest bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm text-on-surface-variant font-bold">+1k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Authentication Canvas -->
+<div class="relative lg:w-1/2 bg-surface-container-lowest flex flex-col justify-between p-6 sm:p-10 lg:p-14">
+<!-- Utility Bar -->
+<div class="flex items-center justify-between w-full max-w-md mx-auto">
+<div class="flex items-center gap-1 text-outline hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="help_outline">help_outline</span>
+<span class="font-label-md text-label-md">Need Help?</span>
+</div>
+<!-- Language / Region Selector -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-outline-variant/60 text-outline text-label-md font-label-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="language">language</span>
+<span>EN (US)</span>
+<span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Main Form Container -->
+<div class="w-full max-w-md mx-auto my-auto py-8">
+<!-- Header -->
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight" id="auth-heading">Welcome back</h2>
+<p class="font-body-md text-body-md text-outline mt-1.5" id="auth-subheading">Sign in to manage your reports and track city impact.</p>
+</div>
+<!-- Segmented Tab Toggle (Clean Minimalist Track) -->
+<div class="bg-surface-container-low p-1 rounded-xl flex items-center mb-8 border border-surface-container-high">
+<button class="flex-1 py-2 text-center rounded-lg font-title-md text-title-md font-semibold transition-all duration-200 bg-surface-container-lowest text-on-surface shadow-sm" id="tab-signin" onclick="switchAuthTab('signin')" type="button">
+            Sign In
+          </button>
+<button class="flex-1 py-2 text-center rounded-lg font-title-md text-title-md font-medium transition-all duration-200 text-outline hover:text-on-surface" id="tab-signup" onclick="switchAuthTab('signup')" type="button">
+            Create Account
+          </button>
+</div>
+<!-- Authentication Form -->
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<!-- Name Field (Hidden on Sign In) -->
+<div class="hidden" id="field-fullname">
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5" for="user-fullname">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="badge">badge</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder-outline-variant focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="user-fullname" placeholder="Alex Morgan" type="text">
+</div>
+</div>
+<!-- Email / Phone Input -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5" for="auth-email">Email or Phone Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="mail">mail</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder-outline-variant focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="auth-email" placeholder="name@ecotrack.org" type="text">
+</div>
+</div>
+<!-- Password Input -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant font-medium" for="auth-password">Password</label>
+<a class="font-label-md text-label-md text-primary font-semibold hover:underline" href="#" id="forgot-password-link">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="lock">lock</span>
+<input class="w-full pl-10 pr-10 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder-outline-variant focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="auth-password" placeholder="••••••••••••" type="password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-1" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility" id="pwd-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Form Options: Remember me & SSL Badge -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary focus:ring-offset-0 transition-colors" type="checkbox">
+<span class="font-body-md text-body-md text-outline">Remember me for 30 days</span>
+</label>
+<div class="flex items-center gap-1 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="lock_open">lock_open</span>
+<span>256-bit SSL</span>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full py-3 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md font-semibold shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0" id="submit-btn" type="submit">
+<span id="submit-text">Sign In</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative my-7">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-container-high"></div>
+</div>
+<div class="relative flex justify-center text-label-sm font-label-sm">
+<span class="bg-surface-container-lowest px-3 text-outline uppercase tracking-wider font-semibold">OR CONTINUE WITH</span>
+</div>
+</div>
+<!-- Alternate Social & Guest Grid -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Google Button -->
+<button class="flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-150 font-title-md text-title-md font-medium text-on-surface" type="button">
+<!-- Google Monogram SVG -->
+<svg class="w-4 h-4" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Google</span>
+</button>
+<!-- Guest Explore Button -->
+<button class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-secondary-fixed bg-secondary-fixed/30 hover:bg-secondary-fixed/60 transition-colors duration-150 font-title-md text-title-md font-semibold text-primary" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="explore">explore</span>
+<span>Explore as Guest</span>
+</button>
+</div>
+</div>
+<!-- Footer Legal Notice -->
+<div class="w-full max-w-md mx-auto text-center pt-4">
+<p class="font-body-sm text-body-sm text-outline">
+          By continuing, you agree to EcoTrack's 
+          <a class="text-on-surface hover:text-primary font-medium underline" href="#">Terms of Service</a> &amp; 
+          <a class="text-on-surface hover:text-primary font-medium underline" href="#">Privacy Policy</a>.
+        </p>
+</div>
+</div>
+</main>
+<!-- Interactive State Switching Scripts -->
+<script>
+    let currentTab = 'signin';
+
+    function switchAuthTab(tab) {
+      currentTab = tab;
+      const btnSignIn = document.getElementById('tab-signin');
+      const btnSignUp = document.getElementById('tab-signup');
+      const fieldFullName = document.getElementById('field-fullname');
+      const heading = document.getElementById('auth-heading');
+      const subheading = document.getElementById('auth-subheading');
+      const submitText = document.getElementById('submit-text');
+      const forgotLink = document.getElementById('forgot-password-link');
+
+      if (tab === 'signin') {
+        btnSignIn.className = 'flex-1 py-2 text-center rounded-lg font-title-md text-title-md font-semibold transition-all duration-200 bg-surface-container-lowest text-on-surface shadow-sm';
+        btnSignUp.className = 'flex-1 py-2 text-center rounded-lg font-title-md text-title-md font-medium transition-all duration-200 text-outline hover:text-on-surface';
+        
+        fieldFullName.classList.add('hidden');
+        heading.innerText = 'Welcome back';
+        subheading.innerText = 'Sign in to manage your reports and track city impact.';
+        submitText.innerText = 'Sign In';
+        forgotLink.classList.remove('hidden');
+      } else {
+        btnSignUp.className = 'flex-1 py-2 text-center rounded-lg font-title-md text-title-md font-semibold transition-all duration-200 bg-surface-container-lowest text-on-surface shadow-sm';
+        btnSignIn.className = 'flex-1 py-2 text-center rounded-lg font-title-md text-title-md font-medium transition-all duration-200 text-outline hover:text-on-surface';
+        
+        fieldFullName.classList.remove('hidden');
+        heading.innerText = 'Join EcoTrack';
+        subheading.innerText = 'Start reporting waste and earning points for a cleaner city.';
+        submitText.innerText = 'Create Account';
+        forgotLink.classList.add('hidden');
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('auth-password');
+      const pwdIcon = document.getElementById('pwd-icon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        pwdIcon.innerText = 'visibility_off';
+      } else {
+        pwdInput.type = 'password';
+        pwdIcon.innerText = 'visibility';
+      }
+    }
+  </script>
+</body></html>

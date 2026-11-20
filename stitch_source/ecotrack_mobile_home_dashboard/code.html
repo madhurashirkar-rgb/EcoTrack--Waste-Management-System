@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>EcoTrack - Waste Management System</title>
+<!-- Tailwind CSS v3 with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 8px 24px -4px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+            'nav': '0 -4px 20px rgba(0, 0, 0, 0.04)',
+            'fab': '0 6px 16px rgba(22, 163, 74, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="base-enhancements">
+    /* Hide scrollbar for standard mobile view feel */
+    body::-webkit-scrollbar, .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    body, .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Device frame mock environment */
+    .bg-canvas {
+      background-color: #0f3d1e;
+    }
+  </style>
+<style data-purpose="decorative-circles">
+    .circle-layer-1 {
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 260px;
+      height: 260px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+    }
+    .circle-layer-2 {
+      position: absolute;
+      top: 40px;
+      right: -20px;
+      width: 190px;
+      height: 190px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-canvas min-h-screen flex items-center justify-center p-0 sm:py-6 antialiased font-sans text-slate-800 selection:bg-brand-500 selection:text-white">
+<!-- BEGIN: Phone Mockup Wrapper -->
+<main class="w-full max-w-[390px] h-[844px] bg-[#f8fafc] sm:rounded-[44px] overflow-hidden shadow-2xl relative flex flex-col border-[6px] border-slate-900/80">
+<!-- BEGIN: iOS Status Bar -->
+<header class="relative z-20 w-full bg-brand-600 px-7 pt-3 pb-1 flex justify-between items-center text-white select-none">
+<span class="text-xs font-semibold tracking-tight">9:41</span>
+<!-- Speaker Notch Ear Speaker Pill -->
+<div class="w-20 h-4 bg-slate-900/30 rounded-full mx-auto hidden sm:block"></div>
+<div class="flex items-center space-x-1.5 text-xs">
+<!-- Cellular Icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.67 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
+<!-- Wifi Icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4zm0 4.5c2.9 0 5.56 1.01 7.69 2.7L12 18.8 4.31 11.2A12.38 12.38 0 0 1 12 8.5z"></path></svg>
+<!-- Battery Icon -->
+<div class="w-5 h-2.5 border border-white rounded-[3px] p-[1px] flex items-center">
+<div class="bg-white h-full w-3 rounded-[1px]"></div>
+</div>
+</div>
+</header>
+<!-- END: iOS Status Bar -->
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto no-scrollbar pb-24 relative">
+<!-- BEGIN: Hero Header Section -->
+<section class="relative bg-gradient-to-b from-brand-600 to-[#1b8a43] px-5 pt-4 pb-14 text-white overflow-hidden" data-purpose="header-section">
+<!-- Decorative subtle circles -->
+<div class="circle-layer-1"></div>
+<div class="circle-layer-2"></div>
+<!-- User Profile Row -->
+<div class="relative z-10 flex items-center justify-between mt-1 mb-5">
+<div>
+<p class="text-[13px] text-brand-100 font-medium tracking-wide">Good morning,</p>
+<h1 class="text-2xl font-bold tracking-tight text-white flex items-center gap-1.5 mt-0.5">
+              Amara Diallo 
+              <span class="inline-block text-xl">👋</span>
+</h1>
+</div>
+<!-- Profile Avatar Button -->
+<button aria-label="User Profile" class="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shadow-sm hover:bg-white/30 transition-colors">
+<svg class="w-6 h-6 stroke-[1.8] stroke-current fill-none" viewbox="0 0 24 24">
+<circle cx="12" cy="8" r="4"></circle>
+<path d="M5.5 20a6.5 6.5 0 0 1 13 0"></path>
+</svg>
+</button>
+</div>
+<!-- Eco Score Pill -->
+<div class="relative z-10 bg-white/15 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center justify-between text-white shadow-inner" data-purpose="eco-score-pill">
+<div class="flex items-center space-x-2">
+<!-- Sparkle/Trend/Leaf Icon -->
+<svg class="w-4 h-4 text-emerald-200 fill-none stroke-current stroke-2" viewbox="0 0 24 24">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-xs font-semibold tracking-wide">Eco Score: 92 / 100</span>
+</div>
+<!-- Progress Bar Container -->
+<div class="w-24 bg-white/30 h-2 rounded-full overflow-hidden p-0.5">
+<div class="bg-white h-full rounded-full w-[92%] transition-all duration-500"></div>
+</div>
+</div>
+</section>
+<!-- END: Hero Header Section -->
+<!-- BEGIN: Metric Overview Card -->
+<section class="px-5 -mt-8 relative z-20" data-purpose="metrics-card">
+<div class="bg-white rounded-2xl p-4 shadow-card flex items-center justify-between border border-slate-100 divide-x divide-slate-100">
+<!-- Metric 1: Reports -->
+<div class="flex-1 text-center px-1">
+<div class="text-2xl font-bold text-[#16a34a] leading-none mb-1">14</div>
+<div class="text-[10px] font-medium text-slate-500 leading-tight mb-1">Reports<br/>Submitted</div>
+<span class="inline-block text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+              +3 this week
+            </span>
+</div>
+<!-- Metric 2: Points -->
+<div class="flex-1 text-center px-1">
+<div class="text-2xl font-bold text-[#0284c7] leading-none mb-1">520</div>
+<div class="text-[10px] font-medium text-slate-500 leading-tight mb-1">Points<br/>Earned</div>
+<span class="inline-block text-[10px] font-semibold text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded-full">
+              +80 pts
+            </span>
+</div>
+<!-- Metric 3: Resolved -->
+<div class="flex-1 text-center px-1">
+<div class="text-2xl font-bold text-[#9333ea] leading-none mb-1">11</div>
+<div class="text-[10px] font-medium text-slate-500 leading-tight mb-1">Issues<br/>Resolved</div>
+<span class="inline-block text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+              78% rate
+            </span>
+</div>
+</div>
+</section>
+<!-- END: Metric Overview Card -->
+<!-- BEGIN: Quick Actions Grid -->
+<section class="px-5 mt-6" data-purpose="quick-actions">
+<h2 class="text-base font-bold text-slate-900 mb-3 tracking-tight">Quick Actions</h2>
+<div class="grid grid-cols-2 gap-3.5">
+<!-- Action 1: Report Waste -->
+<button class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-start text-left group">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-3 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5 stroke-current fill-none stroke-[2]" viewbox="0 0 24 24">
+<path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="font-bold text-slate-800 text-[13px] leading-snug">Report Waste</span>
+</button>
+<!-- Action 2: Collection Points -->
+<button class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-start text-left group">
+<div class="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 mb-3 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5 stroke-current fill-none stroke-[2]" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="font-bold text-slate-800 text-[13px] leading-snug">Collection<br/>Points</span>
+</button>
+<!-- Action 3: My Reports -->
+<button class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-start text-left group">
+<div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-500 mb-3 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5 stroke-current fill-none stroke-[2]" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="font-bold text-slate-800 text-[13px] leading-snug">My Reports</span>
+</button>
+<!-- Action 4: Eco Tips -->
+<button class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-start text-left group">
+<div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-500 mb-3 group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5 stroke-current fill-none stroke-[2]" viewbox="0 0 24 24">
+<path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="font-bold text-slate-800 text-[13px] leading-snug">Eco Tips</span>
+</button>
+</div>
+</section>
+<!-- END: Quick Actions Grid -->
+<!-- BEGIN: Recent Activity Section -->
+<section class="px-5 mt-6" data-purpose="recent-activity">
+<h2 class="text-base font-bold text-slate-900 mb-3 tracking-tight">Recent Activity</h2>
+<div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm flex items-center justify-between">
+<!-- Activity Icon and Info -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700">
+<!-- Recycle/Bin Symbol Representation -->
+<svg class="w-5 h-5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-900">Plastic Waste</h3>
+<p class="text-[11px] text-slate-400 font-medium">Main Street, Zone 3</p>
+</div>
+</div>
+<!-- Status and Timestamp -->
+<div class="flex flex-col items-end">
+<span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full capitalize">
+              resolved
+            </span>
+<div class="flex items-center text-[10px] text-slate-400 mt-1">
+<svg class="w-2.5 h-2.5 mr-1 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>2h ago</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Recent Activity Section -->
+</div>
+<!-- BEGIN: Bottom Navigation Bar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 shadow-nav px-3 py-2 flex items-center justify-between z-30 select-none" data-purpose="bottom-navigation">
+<!-- Nav Item: Home (Active) -->
+<a class="flex-1 flex flex-col items-center justify-center py-1 text-emerald-600" href="#home">
+<svg class="w-5 h-5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Home</span>
+</a>
+<!-- Nav Item: Map -->
+<a class="flex-1 flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-600 transition-colors" href="#map">
+<svg class="w-5 h-5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="12" cy="11" r="2"></circle>
+</svg>
+<span class="text-[10px] font-medium mt-1">Map</span>
+</a>
+<!-- Center Floating Action Button (FAB): Report -->
+<div class="relative -top-5 flex flex-col items-center px-2">
+<button aria-label="Quick Report" class="w-13 h-13 p-3.5 bg-gradient-to-tr from-brand-700 to-brand-500 rounded-full text-white shadow-fab hover:scale-105 active:scale-95 transition-all flex items-center justify-center">
+<svg class="w-6 h-6 stroke-current fill-none stroke-[2.5]" viewbox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+</button>
+<span class="text-[10px] font-semibold text-brand-600 mt-1">Report</span>
+</div>
+<!-- Nav Item: Reports -->
+<a class="flex-1 flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-600 transition-colors" href="#reports">
+<svg class="w-5 h-5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Reports</span>
+</a>
+<!-- Nav Item: Profile -->
+<a class="flex-1 flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-600 transition-colors" href="#profile">
+<svg class="w-5 h-5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium mt-1">Profile</span>
+</a>
+</nav>
+<!-- END: Bottom Navigation Bar -->
+</main>
+<!-- END: Phone Mockup Wrapper -->
+</body></html>

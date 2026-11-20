@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EcoTrack - Profile</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS Play CDN with container queries & forms plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-container": "#fdfcff",
+            "surface-variant": "#dae2fd",
+            "secondary-fixed": "#caead6",
+            "surface-container-high": "#e2e7ff",
+            "error": "#ba1a1a",
+            "inverse-surface": "#283044",
+            "primary-container": "#00873a",
+            "tertiary-fixed-dim": "#93ccff",
+            "surface-bright": "#faf8ff",
+            "tertiary-fixed": "#cce5ff",
+            "on-secondary-container": "#4e6b5a",
+            "surface-container-low": "#f2f3ff",
+            "background": "#faf8ff",
+            "on-surface-variant": "#3e4a3d",
+            "on-error-container": "#93000a",
+            "outline": "#6e7b6c",
+            "on-primary": "#ffffff",
+            "tertiary": "#006194",
+            "inverse-on-surface": "#eef0ff",
+            "on-secondary": "#ffffff",
+            "on-surface": "#131b2e",
+            "surface-dim": "#d2d9f4",
+            "inverse-primary": "#62df7d",
+            "secondary-container": "#caead6",
+            "on-primary-fixed": "#002109",
+            "on-error": "#ffffff",
+            "tertiary-container": "#007bb9",
+            "surface-container": "#eaedff",
+            "on-tertiary-fixed-variant": "#004b73",
+            "surface-tint": "#006e2d",
+            "surface-container-highest": "#dae2fd",
+            "on-secondary-fixed": "#042014",
+            "on-primary-fixed-variant": "#005320",
+            "on-tertiary": "#ffffff",
+            "primary": "#006b2c",
+            "on-secondary-fixed-variant": "#314d3e",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#afceba",
+            "primary-fixed-dim": "#62df7d",
+            "on-background": "#131b2e",
+            "primary-fixed": "#7ffc97",
+            "on-primary-container": "#f7fff2",
+            "surface": "#faf8ff",
+            "secondary": "#486554",
+            "on-tertiary-fixed": "#001d31",
+            "outline-variant": "#bdcaba"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Inter", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "headline-sm": ["Inter", "sans-serif"],
+            "headline-lg-mobile": ["Inter", "sans-serif"],
+            "label-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "display-mobile": ["Inter", "sans-serif"],
+            "title-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"],
+            "title-lg": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-low font-body-md text-on-surface antialiased min-h-screen flex justify-center items-start sm:py-8 sm:px-4">
+<!-- Mobile Screen Container Frame -->
+<div class="w-full max-w-[400px] bg-background min-h-screen sm:min-h-[844px] sm:max-h-[920px] sm:rounded-[44px] shadow-2xl overflow-hidden flex flex-col relative border border-outline-variant/30">
+<!-- Scrollable Body Canvas -->
+<div class="flex-1 overflow-y-auto custom-scroll pb-24 relative">
+<!-- Top Header & Hero Area with Organic Green Gradient -->
+<div class="relative bg-gradient-to-b from-primary to-primary-container pt-3 pb-24 px-5 text-on-primary overflow-hidden">
+<!-- Concentric organic ambient rings -->
+<div class="absolute -right-16 -top-16 w-64 h-64 rounded-full border border-white/10 pointer-events-none"></div>
+<div class="absolute -right-8 -top-8 w-48 h-48 rounded-full border border-white/15 pointer-events-none"></div>
+<div class="absolute left-[-20%] top-[40%] w-56 h-56 rounded-full bg-white/5 blur-2xl pointer-events-none"></div>
+<!-- Phone Status Bar -->
+<div class="flex justify-between items-center text-xs font-semibold tracking-tight text-white/90 mb-4 px-1">
+<span>9:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</div>
+<!-- Header Title Bar Navigation -->
+<div class="flex items-center justify-between mt-1">
+<button class="w-10 h-10 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center active:scale-95 transition-all text-white border border-white/20 hover:bg-white/25">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold text-white tracking-tight">Profile</h1>
+<button class="w-10 h-10 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center active:scale-95 transition-all text-white border border-white/20 hover:bg-white/25">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+</div>
+</div>
+<!-- Main Content Stack (Negative Margin Overlap) -->
+<div class="px-4 -mt-16 flex flex-col gap-4 relative z-10">
+<!-- 1. Profile Header Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-5 shadow-[0_4px_25px_-2px_rgba(15,23,42,0.06)] border border-outline-variant/40 flex flex-col items-center relative">
+<!-- Avatar with Green Ring Border -->
+<div class="relative -mt-14 mb-3">
+<div class="w-24 h-24 rounded-full p-1 bg-surface-container-lowest shadow-md">
+<img alt="Amara Diallo profile avatar" class="w-full h-full object-cover rounded-full border-2 border-primary" data-alt="Close-up portrait of Amara Diallo, a friendly smiling African woman with natural styled hair, wearing an eco-friendly moss green cotton shirt, outdoor natural soft warm daylight, high key minimalist clean portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzP2D4IvnWo0hHQy7tl6sBv_7YooV4dzGrLrS2YDAftndCo3NBiCHNr1BToaQ-7aVxipKSITRITAXT4l8OiD6mc0SI-GjdqdJ8qi-vwLeOcCmYws1JysnV6J5hxqxXnoG8L0ZSPGKgIGWjekYGQBbCluHURXMS-YihKX6xXEozVG4TFjdkGvViFdPhSd4twbEAQyoqeKHcfIXj-I_FLLvV540vRlzXrEOdUUwtn9notYYZ219pxsij">
+</div>
+<div class="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center shadow-md border-2 border-white">
+<span class="material-symbols-outlined text-[13px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<!-- Name & Email -->
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface text-center">Amara Diallo</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium mt-0.5">amara.diallo@ecotrack.org</p>
+<!-- Badges Row -->
+<div class="flex items-center gap-2 mt-3 flex-wrap justify-center">
+<span class="inline-flex items-center gap-1 bg-secondary-container text-on-secondary-container font-label-md text-label-md px-3 py-1 rounded-full border border-secondary/20">
+<span class="material-symbols-outlined text-[15px] text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">eco</span>
+              Eco Hero Lv.3
+            </span>
+<span class="inline-flex items-center gap-1 bg-amber-50 text-amber-800 font-label-md text-label-md px-3 py-1 rounded-full border border-amber-200">
+<span class="material-symbols-outlined text-[15px] text-amber-600" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bolt</span>
+              520 pts
+            </span>
+</div>
+<!-- Progress Section -->
+<div class="w-full mt-5 pt-4 border-t border-surface-container">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Progress to Level 4</span>
+<span class="font-label-md text-label-md font-bold text-primary">520 / 750 pts</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-fixed-dim h-full rounded-full w-[70%] transition-all duration-500"></div>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-1.5 text-right font-medium">230 pts to reach Level 4 Champion</p>
+</div>
+</div>
+<!-- 2. Stats Card (3-Column Layout) -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/40 grid grid-cols-3 divide-x divide-surface-container text-center">
+<!-- Column 1: Reports -->
+<div class="flex flex-col items-center px-1">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px]">assignment</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">14</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Reports</span>
+</div>
+<!-- Column 2: Resolved -->
+<div class="flex flex-col items-center px-1">
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">11</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Resolved</span>
+</div>
+<!-- Column 3: Day Streak -->
+<div class="flex flex-col items-center px-1">
+<div class="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mb-1">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-amber-700">7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Day Streak</span>
+</div>
+</div>
+<!-- 3. Menu Options List Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-2 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/40 overflow-hidden divide-y divide-surface-container/80">
+<!-- Menu Item: My Reports -->
+<a class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors group" href="#">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center border border-blue-100">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+</div>
+<div class="text-left">
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">My Reports</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">14 reports submitted</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+<!-- Menu Item: Eco Points -->
+<a class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors group" href="#">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">energy_savings_leaf</span>
+</div>
+<div class="text-left">
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">Eco Points</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">520 pts · Level 3 Eco Hero</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+<!-- Menu Item: Collection Points -->
+<a class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors group" href="#">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center border border-sky-100">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</div>
+<div class="text-left">
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">Collection Points</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">5 nearby drop-off hubs</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+<!-- Menu Item: Eco Tips -->
+<a class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors group" href="#">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center border border-amber-100">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<div class="text-left">
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">Eco Tips</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">6 tips practiced</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+<!-- Menu Item: Settings -->
+<a class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors group" href="#">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center border border-surface-container-high">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</div>
+<div class="text-left">
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">Settings</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Notifications, privacy &amp; security</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+</div>
+<!-- 4. Sign Out Button & Version Footnote -->
+<div class="pt-2 pb-6 flex flex-col items-center gap-3">
+<button class="w-full py-3.5 rounded-2xl bg-error-container/50 hover:bg-error-container text-error border border-error/20 font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 active:scale-[0.99] transition-all">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+          </button>
+<span class="font-label-sm text-label-sm text-outline">EcoTrack v2.4.1 · Municipal Civic Network</span>
+</div>
+</div>
+</div>
+<!-- Docked Mobile Bottom Navigation Bar (Conforms to JSON Specification & Active Profile Lock) -->
+<!-- JSON Schema: labels ["Home", "Report", "Map", "Tips", "Profile"], icons: ["home", "report_problem", "location_on", "lightbulb", "person"] -->
+<!-- Active State: Profile tab locked via JSON style_active_navigation -->
+<nav class="fixed bottom-0 left-0 sm:absolute w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-inverse-surface shadow-lg">
+<!-- Nav Item 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Nav Item 2: Report -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">report_problem</span>
+<span class="font-label-sm text-label-sm mt-0.5">Report</span>
+</a>
+<!-- Nav Item 3: Map -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">location_on</span>
+<span class="font-label-sm text-label-sm mt-0.5">Map</span>
+</a>
+<!-- Nav Item 4: Tips -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]">lightbulb</span>
+<span class="font-label-sm text-label-sm mt-0.5">Tips</span>
+</a>
+<!-- Nav Item 5: Profile (ACTIVE STATE: applied exact JSON classes) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-3 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-bold">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EcoTrack - Collection Points</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#4e6b5a",
+            "outline": "#6e7b6c",
+            "on-primary-fixed-variant": "#005320",
+            "surface-tint": "#006e2d",
+            "on-primary-container": "#f7fff2",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e2e7ff",
+            "inverse-on-surface": "#eef0ff",
+            "on-tertiary-fixed": "#001d31",
+            "primary-container": "#00873a",
+            "on-primary-fixed": "#002109",
+            "primary": "#006b2c",
+            "surface-dim": "#d2d9f4",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container-low": "#f2f3ff",
+            "on-tertiary-container": "#fdfcff",
+            "surface-container": "#eaedff",
+            "on-background": "#131b2e",
+            "on-error-container": "#93000a",
+            "outline-variant": "#bdcaba",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#283044",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary-fixed-variant": "#004b73",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#faf8ff",
+            "tertiary-fixed-dim": "#93ccff",
+            "on-surface": "#131b2e",
+            "tertiary": "#006194",
+            "primary-fixed-dim": "#62df7d",
+            "tertiary-container": "#007bb9",
+            "secondary-fixed": "#caead6",
+            "tertiary-fixed": "#cce5ff",
+            "inverse-primary": "#62df7d",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3e4a3d",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#afceba",
+            "on-secondary-fixed-variant": "#314d3e",
+            "secondary": "#486554",
+            "on-secondary-fixed": "#042014",
+            "background": "#faf8ff",
+            "primary-fixed": "#7ffc97",
+            "secondary-container": "#caead6",
+            "surface-variant": "#dae2fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "margin": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "display": ["Inter"],
+            "title-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "title-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f2f3ff;
+      border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #bdcaba;
+      border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #6e7b6c;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TOP APP BAR (Shared Components JSON execution) -->
+<header class="bg-surface-container-lowest border-b border-surface-container-high shadow-sm sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="font-title-lg text-title-lg font-bold text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="recycling">recycling</span>
+<span class="">EcoTrack</span>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-6"><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-150 font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-150 font-label-md text-label-md" href="#">Report Waste</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-150 font-label-md text-label-md" href="#">Collection Points</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-150 font-label-md text-label-md" href="#">My Reported Waste</a></nav>
+</div>
+<!-- Trailing Action Badges & Avatar -->
+<div class="flex items-center gap-4">
+<!-- EcoPoints Badge -->
+<div class="flex items-center gap-1.5 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-primary text-base" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="">520 EcoPoints</span>
+</div>
+<!-- Notification Action -->
+<button aria-label="Notifications" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<!-- Profile Toggle -->
+<div class="flex items-center gap-2 pl-2 border-l border-surface-container-high">
+<img alt="User avatar profile toggle" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A clean modern profile portrait of a female sustainability logistics specialist smiling gently outdoors with natural green foliage blurred softly in the sunlit background, wearing crisp light slate attire. High clarity, eco aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3Naxt9fXet-81Ekh8H2URtFMl2iHaHwk7S_fGPYDYGyakJsjF8S13e_3QUGurMI7QsqL-f58sGaT9yN9sBvovr-CwEr3VHUfizFLjTfJ626XtIGK0Kg3ebmEKknCOyi81L4EOzMri1oFDW2nAmalvuDyxHQR0L-GQw2wzpGuzMc0ruTTZsLtbA6Piq_D3vyhQSZM-vOAEDTwdU8gnBJcWZ_dibC6J_1jaPBqyFBbNP1ViHemhHu1e">
+<span class="hidden lg:inline text-on-surface font-label-md text-label-md font-medium">Elena R.</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WORKSPACE -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-6 py-6 flex flex-col gap-6">
+<!-- PAGE HEADER BANNER -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="near_me">near_me</span>
+<span class="">Municipal Routing &amp; Diversion Grid</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Collection Points</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Find nearby eco drop-off &amp; sorting locations across municipal zones</p>
+</div>
+<!-- Quick Metrics Counter Header -->
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-low px-4 py-2.5 rounded-lg border border-surface-container-high flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="domain_verification">domain_verification</span>
+<div>
+<div class="font-label-sm text-label-sm text-outline">ACTIVE HUBS</div>
+<div class="font-title-md text-title-md font-bold text-on-surface">18 Verified</div>
+</div>
+</div>
+<div class="bg-surface-container-low px-4 py-2.5 rounded-lg border border-surface-container-high flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-xl" data-icon="sync">sync</span>
+<div>
+<div class="font-label-sm text-label-sm text-outline">ZONE STATUS</div>
+<div class="font-title-md text-title-md font-bold text-on-surface">Normal Flow</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SEARCH & FILTER TOOLBAR -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high space-y-4">
+<!-- Upper Search Row & Control Selectors -->
+<div class="flex flex-col lg:flex-row gap-3 items-center justify-between">
+<!-- Search Input -->
+<div class="relative w-full lg:flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 text-sm bg-surface-container-lowest border border-outline-variant rounded-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-outline" placeholder="Search collection points by address, landmark, or category..." type="text">
+</div>
+<!-- Dropdowns & View Switcher -->
+<div class="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-between lg:justify-end">
+<!-- Zone / Radius Selector -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-md pl-3 pr-8 py-2 font-label-md text-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer">
+<option>Radius: Within 1km</option>
+<option selected="">Radius: Within 5km</option>
+<option>Radius: Within 10km</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-base" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Sort Dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-md pl-3 pr-8 py-2 font-label-md text-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer">
+<option selected="">Sorted by closest</option>
+<option>Highest diversion rate</option>
+<option>Most slot availability</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-base" data-icon="sort">sort</span>
+</div>
+<!-- View Mode Toggle -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-md border border-outline-variant/60">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest rounded shadow-xs font-label-md text-label-md font-semibold text-on-surface transition-all">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="view_agenda">view_agenda</span>
+<span class="">Split View</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded font-label-md text-label-md text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="map">map</span>
+<span class="">Full Map</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Filter Category Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+<span class="font-label-sm text-label-sm text-outline font-semibold uppercase tracking-wider mr-1">Filter:</span>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-semibold bg-primary text-on-primary shadow-xs whitespace-nowrap">All</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">Dry</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">Wet</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">E-Waste</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">Plastic</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">Hazardous</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">Glass</button>
+<button class="px-3 py-1 rounded-full font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-secondary-container transition-colors whitespace-nowrap">Organic</button>
+</div>
+</div>
+<!-- SPLIT LAYOUT (2 COLUMNS) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT SIDE: SCROLLABLE LIST OF COLLECTION POINT CARDS (7 Cols) -->
+<section class="lg:col-span-7 flex flex-col gap-4 max-h-[720px] overflow-y-auto pr-2 custom-scrollbar">
+<!-- Card 1: Central Green Hub -->
+<article class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-primary/40 relative hover:border-primary transition-all duration-200">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-secondary-container text-on-secondary-container">
+                  Zone 3 Municipal
+                </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary/10 text-primary font-semibold">
+                  0.3 km away
+                </span>
+</div>
+<h2 class="font-title-lg text-title-lg font-bold text-on-surface">Central Green Hub - Zone 3</h2>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                42 Elm Street, Metro Sector B
+              </p>
+</div>
+<!-- Live Availability Pill -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-secondary-container rounded-full text-primary font-label-sm text-label-sm font-semibold whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              3 slots available
+            </div>
+</div>
+<!-- Accepted Waste Tags -->
+<div class="flex flex-wrap gap-1.5 my-3">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Plastic</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Dry</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">E-Waste</span>
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm rounded font-medium">+50 EcoPoints/bag</span>
+</div>
+<!-- Operating Info & Action Buttons -->
+<div class="pt-3 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-outline" data-icon="schedule">schedule</span>
+<span class="">Hours: <strong class="font-medium text-on-surface">Mon–Sat 8:00 AM – 6:00 PM</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg border border-outline-variant font-label-md text-label-md font-semibold text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="navigation">navigation</span>
+<span class="">Navigate</span>
+</button>
+<button class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-xs transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+<span class="">Drop Off</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Pine Ave Community Recycler -->
+<article class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high hover:border-outline-variant transition-all duration-200">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container text-on-surface-variant">
+                  Zone 3 Community
+                </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary/10 text-primary font-semibold">
+                  0.8 km away
+                </span>
+</div>
+<h2 class="font-title-lg text-title-lg font-bold text-on-surface">Pine Ave Community Recycler</h2>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                115 Pine Avenue, Green Ridge
+              </p>
+</div>
+<!-- Certified Badge -->
+<span class="px-2.5 py-1 bg-surface-container text-tertiary rounded-full font-label-sm text-label-sm font-semibold">
+              Hazardous Certified
+            </span>
+</div>
+<!-- Accepted Waste Tags -->
+<div class="flex flex-wrap gap-1.5 my-3">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">E-Waste</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded font-label-sm text-label-sm font-medium">Hazardous</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Batteries</span>
+</div>
+<!-- Operating Info & Action Buttons -->
+<div class="pt-3 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-outline" data-icon="schedule">schedule</span>
+<span class="">Hours: <strong class="font-medium text-on-surface">Tue–Sun 9:00 AM – 5:00 PM</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg border border-outline-variant font-label-md text-label-md font-semibold text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="navigation">navigation</span>
+<span class="">Navigate</span>
+</button>
+<button class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-xs transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+<span class="">Drop Off</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Oakridge District Sorting Center -->
+<article class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high hover:border-outline-variant transition-all duration-200">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container text-on-surface-variant">
+                  District Depot
+                </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary/10 text-primary font-semibold">
+                  1.4 km away
+                </span>
+</div>
+<h2 class="font-title-lg text-title-lg font-bold text-on-surface">Oakridge District Sorting Center</h2>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                78 Oakridge Blvd, Zone 2 Border
+              </p>
+</div>
+<span class="px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full font-label-sm text-label-sm font-semibold">
+              Open 24/7
+            </span>
+</div>
+<!-- Accepted Waste Tags -->
+<div class="flex flex-wrap gap-1.5 my-3">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Glass</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Organic</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Plastic</span>
+</div>
+<!-- Operating Info & Action Buttons -->
+<div class="pt-3 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-outline" data-icon="schedule">schedule</span>
+<span class="">Hours: <strong class="font-medium text-primary">Daily 24/7 Drop Boxes</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg border border-outline-variant font-label-md text-label-md font-semibold text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="navigation">navigation</span>
+<span class="">Navigate</span>
+</button>
+<button class="px-4 py-1.5 rounded-lg bg-surface-container-low hover:bg-secondary-container text-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1 border border-primary/20">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+<span class="">View Specs</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4: North Sector Civic Depot -->
+<article class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high hover:border-outline-variant transition-all duration-200">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container text-on-surface-variant">
+                  Zone 1 Heavy Logistics
+                </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary/10 text-primary font-semibold">
+                  2.1 km away
+                </span>
+</div>
+<h2 class="font-title-lg text-title-lg font-bold text-on-surface">North Sector Civic Depot</h2>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                340 North Parkway, Industrial Ring
+              </p>
+</div>
+<span class="px-2.5 py-1 bg-surface-container-highest text-on-surface rounded-full font-label-sm text-label-sm font-semibold">
+              Heavy Drop-off
+            </span>
+</div>
+<!-- Accepted Waste Tags -->
+<div class="flex flex-wrap gap-1.5 my-3">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">Bulk Waste</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded font-label-sm text-label-sm font-medium">Hazardous</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface font-medium">E-Waste</span>
+</div>
+<!-- Operating Info & Action Buttons -->
+<div class="pt-3 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-outline" data-icon="schedule">schedule</span>
+<span class="">Hours: <strong class="font-medium text-on-surface">Mon–Fri 7:00 AM – 3:30 PM</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg border border-outline-variant font-label-md text-label-md font-semibold text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="navigation">navigation</span>
+<span class="">Navigate</span>
+</button>
+<button class="px-4 py-1.5 rounded-lg bg-surface-container-low hover:bg-secondary-container text-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1 border border-primary/20">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="">Schedule Truck</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- RIGHT SIDE: INTERACTIVE DESKTOP MAP VIEW WIDGET (5 Cols) -->
+<section class="lg:col-span-5 bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-high p-4 flex flex-col h-[720px] sticky top-20">
+<!-- Map Header bar with Zone 3 stats -->
+<div class="flex items-center justify-between mb-3 px-1">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary animate-ping"></div>
+<span class="font-title-md text-title-md font-bold text-on-surface">Zone 3 Geo-Grid</span>
+</div>
+<span class="font-label-md text-label-md font-semibold bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full">
+            5 points nearby in Zone 3
+          </span>
+</div>
+<!-- Custom Green Styled Map Canvas Container -->
+<div class="relative flex-1 rounded-lg overflow-hidden border border-outline-variant/40 bg-surface-container-low flex flex-col justify-between p-4" data-location="Munich">
+<!-- Realistic Styled Map Graphic Layer -->
+<div class="absolute inset-0 bg-[#eef7f0] opacity-95">
+<!-- Road and Grid vector outlines via SVG simulation -->
+<svg class="w-full h-full object-cover" fill="none" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+<!-- Waterway -->
+<path d="M-20 420 C 150 410, 280 470, 520 430" stroke="#cce5ff" stroke-linecap="round" stroke-width="28"></path>
+<path d="M-20 420 C 150 410, 280 470, 520 430" stroke="#93ccff" stroke-linecap="round" stroke-width="12"></path>
+<!-- Municipal Green Zones (Parks) -->
+<rect fill="#caead6" height="110" opacity="0.6" rx="16" width="140" x="30" y="50"></rect>
+<rect fill="#caead6" height="130" opacity="0.5" rx="20" width="180" x="290" y="180"></rect>
+<rect fill="#caead6" height="100" opacity="0.7" rx="14" width="190" x="180" y="470"></rect>
+<!-- Arterial Roads -->
+<path d="M 0 160 L 500 160" stroke="#ffffff" stroke-width="10"></path>
+<path d="M 0 160 L 500 160" stroke="#cbd5e1" stroke-width="2"></path>
+<path d="M 230 0 L 230 600" stroke="#ffffff" stroke-width="12"></path>
+<path d="M 230 0 L 230 600" stroke="#cbd5e1" stroke-width="2"></path>
+<path d="M 50 0 L 450 600" stroke="#ffffff" stroke-width="8"></path>
+<path d="M 50 0 L 450 600" stroke="#cbd5e1" stroke-width="1.5"></path>
+<path d="M 450 40 L 50 560" stroke="#ffffff" stroke-width="8"></path>
+<path d="M 450 40 L 50 560" stroke="#cbd5e1" stroke-width="1.5"></path>
+<!-- Secondary streets -->
+<path d="M 100 280 L 400 280" stroke="#ffffff" stroke-width="6"></path>
+<path d="M 120 380 L 480 380" stroke="#ffffff" stroke-width="6"></path>
+<path d="M 330 0 L 330 380" stroke="#ffffff" stroke-width="6"></path>
+<!-- Active Route Path from User to Central Green Hub -->
+<path d="M 180 340 L 230 280 L 230 190" stroke="#00873a" stroke-dasharray="6 6" stroke-linecap="round" stroke-width="5"></path>
+</svg>
+</div>
+<!-- Dynamic Pin 1: User Current Location -->
+<div class="absolute" style="top: 55%; left: 34%;">
+<div class="relative flex items-center justify-center">
+<span class="w-6 h-6 rounded-full bg-tertiary/30 animate-ping absolute"></span>
+<div class="w-5 h-5 rounded-full bg-tertiary border-2 border-surface-container-lowest shadow-md flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></span>
+</div>
+</div>
+<div class="mt-1 -ml-6 bg-inverse-surface text-inverse-on-surface font-label-sm text-[10px] px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap">
+              Your Location
+            </div>
+</div>
+<!-- Dynamic Pin 2: Active Selected Hub (Central Green Hub) -->
+<div class="absolute" style="top: 28%; left: 42%;">
+<div class="bg-primary text-on-primary px-2.5 py-1.5 rounded-xl shadow-lg border-2 border-surface-container-lowest flex items-center gap-1.5 cursor-pointer transform hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="recycling">recycling</span>
+<span class="font-label-sm text-label-sm font-bold">Central Green Hub</span>
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+</div>
+</div>
+<!-- Dynamic Pin 3: Pine Ave Recycler -->
+<div class="absolute" style="top: 20%; left: 72%;">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-primary shadow-md flex items-center justify-center cursor-pointer hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="delete">delete</span>
+</div>
+<div class="mt-1 -ml-3 bg-surface-container-lowest/90 border border-outline-variant font-label-sm text-[10px] px-1 rounded shadow-xs whitespace-nowrap">
+              Pine Ave (0.8km)
+            </div>
+</div>
+<!-- Dynamic Pin 4: Cluster Tag -->
+<div class="absolute" style="top: 68%; left: 62%;">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-bold shadow-md flex items-center justify-center border-2 border-surface-container-lowest cursor-pointer hover:scale-110 transition-transform">
+              +2
+            </div>
+<div class="mt-0.5 -ml-4 bg-surface-container-lowest/90 border border-outline-variant font-label-sm text-[10px] px-1 rounded shadow-xs whitespace-nowrap">
+              South Cluster
+            </div>
+</div>
+<!-- Dynamic Pin 5: Oakridge Blvd -->
+<div class="absolute" style="top: 75%; left: 22%;">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-tertiary shadow-md flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="warehouse">warehouse</span>
+</div>
+</div>
+<!-- Map Floating Controls & Route Direction Card (Overlay) -->
+<div class="relative z-10 flex justify-between items-start">
+<!-- Municipal Zone Indicator -->
+<div class="bg-surface-container-lowest/95 backdrop-blur px-3 py-1.5 rounded-lg border border-outline-variant shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base" data-icon="layers">layers</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Sector B3 • Eco Fleet Live</span>
+</div>
+<!-- Zoom & Re-center Tools -->
+<div class="flex flex-col gap-1 bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors" title="Zoom in">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+</button>
+<div class="h-px bg-surface-container-high"></div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors" title="Zoom out">
+<span class="material-symbols-outlined text-base" data-icon="remove">remove</span>
+</button>
+<div class="h-px bg-surface-container-high"></div>
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors" title="Locate me">
+<span class="material-symbols-outlined text-base" data-icon="my_location">my_location</span>
+</button>
+</div>
+</div>
+<!-- Route Direction Overlay Banner (Bottom of map) -->
+<div class="relative z-10 bg-surface-container-lowest/95 backdrop-blur-md p-3.5 rounded-xl border border-primary/30 shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="turn_right">turn_right</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Suggested Fast Route: 4 min</div>
+<div class="font-body-sm text-body-sm text-outline">Via Elm St • Low pedestrian density</div>
+</div>
+</div>
+<a class="px-3 py-1.5 bg-primary text-on-primary rounded-md font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors" href="#">
+                Start Route
+              </a>
+</div>
+</div>
+</div>
+<!-- Lower Map legend -->
+<div class="flex items-center justify-between text-outline font-label-sm text-[11px] mt-3 px-1">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Recycler Hub</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> District Depot</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-error"></span> Hazard Station</span>
+</div>
+<span class="">Updated 2 mins ago</span>
+</div>
+</section>
+</div>
+<!-- CIVIC ROUTE DISPATCH & AUDIT BANNER (Bento Style Information Card) -->
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="electric_rickshaw">electric_rickshaw</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">On-Demand Civic Bulk Collection</h3>
+<p class="font-body-sm text-body-sm text-outline">Have over 50kg or large electronics? Municipal electric vans can pick up directly from verified curb bays.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="px-4 py-2 rounded-lg border border-outline-variant font-label-md text-label-md font-semibold text-on-surface hover:bg-surface-container-low transition-colors">
+          View Zone Timetable
+        </button>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-colors shadow-xs">
+          Request Bay Pick-up
+        </button>
+</div>
+</section>
+</main>
+<!-- CIVIC FOOTER -->
+<footer class="bg-surface-container-lowest border-t border-surface-container-high py-6 mt-8">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-outline">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base" data-icon="eco">eco</span>
+<span class="font-medium text-on-surface">EcoTrack Civic Infrastructure Platform</span>
+<span class="">• Municipal Environmental Oversight v4.2</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Disposal Standards</a>
+<a class="hover:text-primary transition-colors" href="#">Hazardous Protocols</a>
+<a class="hover:text-primary transition-colors" href="#">API &amp; Geodata</a>
+<a class="hover:text-primary transition-colors" href="#">Report Discrepancy</a>
+</div>
+</div>
+</footer>
+
+
+
+
+
+
+</body></html>

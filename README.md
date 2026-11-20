@@ -66,4 +66,4 @@ npm run dev
 ## 🔑 Demo Credentials
 
 - **Citizen User**: `user@ecotrack.org` / `password123`
-- **Sanitation Officer (Admin)**: `admin@ecotrack.org` / `admin@123`
+- **Sanitation Officer (Admin)**: `admin@ecotrack.org` / `admin123`

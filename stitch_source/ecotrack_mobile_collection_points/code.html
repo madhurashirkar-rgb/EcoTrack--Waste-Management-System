@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EcoTrack - Collection Points</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#eaedff",
+            "secondary-fixed-dim": "#afceba",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#bdcaba",
+            "primary-container": "#00873a",
+            "on-tertiary-container": "#fdfcff",
+            "surface-dim": "#d2d9f4",
+            "on-primary-fixed": "#002109",
+            "error": "#ba1a1a",
+            "surface-container-high": "#e2e7ff",
+            "surface-bright": "#faf8ff",
+            "surface-container-low": "#f2f3ff",
+            "on-secondary-container": "#4e6b5a",
+            "primary-fixed": "#7ffc97",
+            "inverse-surface": "#283044",
+            "on-tertiary-fixed": "#001d31",
+            "secondary-fixed": "#caead6",
+            "inverse-on-surface": "#eef0ff",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#005320",
+            "on-error": "#ffffff",
+            "surface": "#faf8ff",
+            "on-secondary-fixed": "#042014",
+            "on-tertiary-fixed-variant": "#004b73",
+            "secondary": "#486554",
+            "tertiary-fixed-dim": "#93ccff",
+            "surface-variant": "#dae2fd",
+            "on-primary-container": "#f7fff2",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "on-surface": "#131b2e",
+            "background": "#faf8ff",
+            "on-secondary-fixed-variant": "#314d3e",
+            "primary-fixed-dim": "#62df7d",
+            "surface-container-highest": "#dae2fd",
+            "on-background": "#131b2e",
+            "tertiary": "#006194",
+            "tertiary-fixed": "#cce5ff",
+            "surface-tint": "#006e2d",
+            "primary": "#006b2c",
+            "on-surface-variant": "#3e4a3d",
+            "secondary-container": "#caead6",
+            "outline": "#6e7b6c",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#007bb9",
+            "inverse-primary": "#62df7d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "display-mobile": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "display": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "title-md": ["Inter"],
+            "title-lg": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for category pills bar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-slate-900 text-on-surface antialiased min-h-screen flex justify-center items-center sm:p-6">
+<!-- Mobile Frame Container (EcoTrack Device Viewport) -->
+<main class="w-full max-w-[412px] h-[884px] max-h-[920px] bg-background relative flex flex-col overflow-hidden sm:rounded-[40px] shadow-2xl border-0 sm:border-[8px] sm:border-slate-800">
+<!-- Top Hardware Status Bar -->
+<header class="w-full bg-primary text-on-primary px-7 pt-3 pb-1 flex justify-between items-center z-30 select-none">
+<span class="font-label-md text-label-md font-bold tracking-tight">9:41</span>
+<div class="flex items-center gap-1.5 opacity-90">
+<span class="material-symbols-outlined text-[15px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[15px]">wifi</span>
+<span class="material-symbols-outlined text-[17px]">battery_full</span>
+</div>
+</header>
+<!-- EcoTrack Green Organic Curved Header -->
+<section class="relative bg-primary text-on-primary pt-3 pb-7 px-6 overflow-hidden z-20">
+<!-- Decorative Concentric Rings as seen in screenshots -->
+<div class="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/10 pointer-events-none"></div>
+<div class="absolute -right-4 -top-4 w-32 h-32 rounded-full bg-white/10 pointer-events-none"></div>
+<div class="absolute -left-10 bottom-0 w-28 h-28 rounded-full bg-emerald-500/20 pointer-events-none"></div>
+<!-- Action Navigation Header -->
+<div class="flex items-center justify-between relative z-10 mb-3">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center text-on-primary transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<!-- Notification Pill / Live Status -->
+<div class="flex items-center gap-1.5 bg-emerald-800/60 backdrop-blur-md px-3 py-1 rounded-full border border-emerald-400/30">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed">Live GPS</span>
+</div>
+<button aria-label="Notifications" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center text-on-primary transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+</div>
+</div>
+<!-- Title & Context -->
+<div class="relative z-10">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-white">Collection Points</h1>
+<p class="font-body-md text-body-md text-emerald-100 opacity-95">Find nearby eco drop-off &amp; sorting locations</p>
+</div>
+</section>
+<!-- Scrollable Workspace Body -->
+<div class="flex-1 overflow-y-auto no-scrollbar pb-24 -mt-3 relative z-20">
+<!-- Search & Filter Card -->
+<section class="px-4 mb-4">
+<div class="bg-surface-container-lowest p-2 rounded-2xl shadow-[0_4px_20px_-2px_rgba(15,23,42,0.08)] flex items-center gap-2 border border-slate-100">
+<div class="flex items-center pl-3 flex-1 text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<input class="w-full bg-transparent border-0 focus:ring-0 text-on-surface font-body-md text-body-md px-2 placeholder:text-outline/70 focus:outline-none" placeholder="Search collection points..." type="text">
+</div>
+<button aria-label="Filters" class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-sm hover:bg-primary-container transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</section>
+<!-- Category Filter Pills (Horizontal Scroll) -->
+<nav aria-label="Categories" class="px-4 mb-4">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5" id="categoryTabs">
+<button class="category-pill active flex-shrink-0 px-4 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-primary text-on-primary shadow-sm transition-all duration-150" type="button">All</button>
+<button class="category-pill flex-shrink-0 px-4 py-1.5 rounded-full font-label-md text-label-md font-medium bg-surface-container-lowest text-on-surface-variant border border-slate-200/80 hover:bg-slate-50 transition-all duration-150" type="button">Dry</button>
+<button class="category-pill flex-shrink-0 px-4 py-1.5 rounded-full font-label-md text-label-md font-medium bg-surface-container-lowest text-on-surface-variant border border-slate-200/80 hover:bg-slate-50 transition-all duration-150" type="button">Wet</button>
+<button class="category-pill flex-shrink-0 px-4 py-1.5 rounded-full font-label-md text-label-md font-medium bg-surface-container-lowest text-on-surface-variant border border-slate-200/80 hover:bg-slate-50 transition-all duration-150" type="button">E-Waste</button>
+<button class="category-pill flex-shrink-0 px-4 py-1.5 rounded-full font-label-md text-label-md font-medium bg-surface-container-lowest text-on-surface-variant border border-slate-200/80 hover:bg-slate-50 transition-all duration-150" type="button">Plastic</button>
+<button class="category-pill flex-shrink-0 px-4 py-1.5 rounded-full font-label-md text-label-md font-medium bg-surface-container-lowest text-on-surface-variant border border-slate-200/80 hover:bg-slate-50 transition-all duration-150" type="button">Hazardous</button>
+</div>
+</nav>
+<!-- Interactive Map Preview Card -->
+<section class="px-4 mb-5">
+<div class="relative bg-emerald-50/70 border border-emerald-100 rounded-2xl p-4 overflow-hidden shadow-sm">
+<!-- Abstract Mini Map Grid Decorator -->
+<div class="absolute inset-0 opacity-15 bg-[radial-gradient(#006b2c_1px,transparent_1px)] [background-size:14px_14px]"></div>
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-primary flex-shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[26px]">map</span>
+<span class="absolute -top-1 -right-1 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md font-bold text-on-surface">Interactive Map View</h2>
+<p class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  5 points nearby
+                </p>
+</div>
+</div>
+<button class="px-3 py-1.5 bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold rounded-lg border border-emerald-200/80 shadow-sm flex items-center gap-1 hover:bg-emerald-50 transition-all active:scale-95" type="button">
+<span>Open</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Collection Points Card List -->
+<section class="px-4 flex flex-col gap-3.5">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Available Drop-Offs</h3>
+<span class="font-label-sm text-label-sm text-outline">Sorted by closest</span>
+</div>
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-slate-100 flex flex-col gap-3 transition-transform hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">recycling</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface leading-tight">Central Green Hub - Zone 3</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">place</span>
+                  42 Elm Street, Downtown Sector
+                </p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-emerald-100 text-emerald-800 flex-shrink-0">
+              0.3 km
+            </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pl-14">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Plastic
+            </span>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-amber-50 text-amber-800 border border-amber-200/60">
+              Dry
+            </span>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-purple-50 text-purple-700 border border-purple-200/60">
+              E-Waste
+            </span>
+</div>
+<!-- Divider -->
+<div class="h-[1px] bg-slate-100 w-full mt-1"></div>
+<!-- Bottom Action Row -->
+<div class="flex items-center justify-between pl-1">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Mon–Sat, 8am–6pm
+              </span>
+<span class="font-label-sm text-label-sm font-bold text-primary mt-0.5">3 slots available</span>
+</div>
+<button class="px-3.5 py-1.5 bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm hover:bg-primary-container transition-all active:scale-95 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+<span>Drop Off</span>
+</button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-slate-100 flex flex-col gap-3 transition-transform hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-700 flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">electrical_services</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface leading-tight">Pine Ave Community Recycler</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">place</span>
+                  115 Pine Avenue (Near City Park)
+                </p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-emerald-100 text-emerald-800 flex-shrink-0">
+              0.8 km
+            </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pl-14">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-purple-50 text-purple-700 border border-purple-200/60">
+              E-Waste
+            </span>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-red-50 text-red-700 border border-red-200/60 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Hazardous
+            </span>
+</div>
+<!-- Divider -->
+<div class="h-[1px] bg-slate-100 w-full mt-1"></div>
+<!-- Bottom Action Row -->
+<div class="flex items-center justify-between pl-1">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Tue–Sun, 9am–5pm
+              </span>
+<span class="font-label-sm text-label-sm font-bold text-primary mt-0.5">5 slots available</span>
+</div>
+<button class="px-3.5 py-1.5 bg-surface-container-low text-primary font-label-md text-label-md font-semibold rounded-lg hover:bg-secondary-container transition-all active:scale-95 flex items-center gap-1 border border-primary/20" type="button">
+<span class="material-symbols-outlined text-[16px]">directions</span>
+<span>Navigate</span>
+</button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-slate-100 flex flex-col gap-3 transition-transform hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-700 flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">compost</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface leading-tight">EcoHub West Organic Depot</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">place</span>
+                  88 Willowbrook Rd, Sector 4
+                </p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-emerald-100 text-emerald-800 flex-shrink-0">
+              1.4 km
+            </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pl-14">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-teal-50 text-teal-800 border border-teal-200/60">
+              Wet
+            </span>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-lime-50 text-lime-800 border border-lime-200/60 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-lime-600"></span> Organic
+            </span>
+</div>
+<!-- Divider -->
+<div class="h-[1px] bg-slate-100 w-full mt-1"></div>
+<!-- Bottom Action Row -->
+<div class="flex items-center justify-between pl-1">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Open Daily, 7am–8pm
+              </span>
+<span class="font-label-sm text-label-sm font-bold text-primary mt-0.5">Open now • No wait</span>
+</div>
+<button class="px-3.5 py-1.5 bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm hover:bg-primary-container transition-all active:scale-95 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+<span>Drop Off</span>
+</button>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-slate-100 flex flex-col gap-3 transition-transform hover:-translate-y-0.5 mb-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-3">
+<div class="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">domain</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface leading-tight">Northside Municipal Yard</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-outline">place</span>
+                  204 Industrial Parkway
+                </p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-emerald-100 text-emerald-800 flex-shrink-0">
+              2.1 km
+            </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pl-14">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-amber-50 text-amber-800 border border-amber-200/60">
+              Dry
+            </span>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-blue-50 text-blue-700 border border-blue-200/60">
+              Plastic
+            </span>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-red-50 text-red-700 border border-red-200/60">
+              Hazardous
+            </span>
+</div>
+<!-- Divider -->
+<div class="h-[1px] bg-slate-100 w-full mt-1"></div>
+<!-- Bottom Action Row -->
+<div class="flex items-center justify-between pl-1">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Mon–Fri, 8am–4pm
+              </span>
+<span class="font-label-sm text-label-sm font-bold text-amber-700 mt-0.5">2 slots available</span>
+</div>
+<button class="px-3.5 py-1.5 bg-surface-container-low text-primary font-label-md text-label-md font-semibold rounded-lg hover:bg-secondary-container transition-all active:scale-95 flex items-center gap-1 border border-primary/20" type="button">
+<span class="material-symbols-outlined text-[16px]">directions</span>
+<span>Navigate</span>
+</button>
+</div>
+</article>
+</section>
+</div>
+<!-- Persistent Bottom Navigation Bar (EcoTrack Shared Anchor) -->
+<!-- Mapped: "Map" is semantic closest destination for Collection Points -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 w-full z-50 md:hidden flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-inverse-surface shadow-lg">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Report -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">report_problem</span>
+<span class="font-label-sm text-label-sm mt-0.5">Report</span>
+</a>
+<!-- Map (ACTIVE DESTINATION FOR COLLECTION POINTS) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-bold">Map</span>
+</a>
+<!-- Tips -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">lightbulb</span>
+<span class="font-label-sm text-label-sm mt-0.5">Tips</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-sm text-label-sm mt-0.5">Profile</span>
+</a>
+</nav>
+</main>
+<!-- Interactive Pill Filter Tab Switcher Microinteraction -->
+<script>
+    document.querySelectorAll('.category-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        document.querySelectorAll('.category-pill').forEach(btn => {
+          btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm', 'font-semibold');
+          btn.classList.add('bg-surface-container-lowest', 'text-on-surface-variant', 'border', 'border-slate-200/80', 'font-medium');
+        });
+        this.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant', 'border', 'border-slate-200/80', 'font-medium');
+        this.classList.add('bg-primary', 'text-on-primary', 'shadow-sm', 'font-semibold');
+      });
+    });
+  </script>
+</body></html>

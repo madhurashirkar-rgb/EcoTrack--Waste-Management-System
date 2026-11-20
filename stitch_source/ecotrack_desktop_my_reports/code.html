@@ -1,0 +1,656 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EcoTrack - My Submitted Reports</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#4e6b5a",
+            "outline": "#6e7b6c",
+            "on-primary-fixed-variant": "#005320",
+            "surface-tint": "#006e2d",
+            "on-primary-container": "#f7fff2",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e2e7ff",
+            "inverse-on-surface": "#eef0ff",
+            "on-tertiary-fixed": "#001d31",
+            "primary-container": "#00873a",
+            "on-primary-fixed": "#002109",
+            "primary": "#006b2c",
+            "surface-dim": "#d2d9f4",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-container-low": "#f2f3ff",
+            "on-tertiary-container": "#fdfcff",
+            "surface-container": "#eaedff",
+            "on-background": "#131b2e",
+            "on-error-container": "#93000a",
+            "outline-variant": "#bdcaba",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#283044",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary-fixed-variant": "#004b73",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#faf8ff",
+            "tertiary-fixed-dim": "#93ccff",
+            "on-surface": "#131b2e",
+            "tertiary": "#006194",
+            "primary-fixed-dim": "#62df7d",
+            "tertiary-container": "#007bb9",
+            "secondary-fixed": "#caead6",
+            "tertiary-fixed": "#cce5ff",
+            "inverse-primary": "#62df7d",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3e4a3d",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#afceba",
+            "on-secondary-fixed-variant": "#314d3e",
+            "secondary": "#486554",
+            "on-secondary-fixed": "#042014",
+            "background": "#faf8ff",
+            "primary-fixed": "#7ffc97",
+            "secondary-container": "#caead6",
+            "surface-variant": "#dae2fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "margin": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "display": ["Inter"],
+            "title-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-sm": ["Inter"],
+            "display-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "title-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .custom-soft-shadow {
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    }
+    .custom-floating-shadow {
+      box-shadow: 0 10px 25px -3px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-secondary-container selection:text-primary">
+<!-- Desktop Top Navigation (From Shared Components JSON) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface shadow-sm sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
+<!-- Brand Logo Anchor -->
+<div class="flex items-center gap-8">
+<a class="font-title-lg text-title-lg font-bold text-primary dark:text-inverse-primary flex items-center gap-2 tracking-tight" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="delete_outline" style="font-variation-settings: 'FILL' 1;">delete_outline</span>
+</div>
+<span class="">EcoTrack</span>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-6"><a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">Report Waste</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">Collection Points</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-label-md text-label-md" href="#">My Reported Waste</a></nav>
+</div>
+<!-- Right Utility Cluster -->
+<div class="flex items-center gap-4">
+<!-- EcoPoints Badge (520 pts live token) -->
+<div class="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-full font-label-md text-label-md">
+<span class="material-symbols-outlined text-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-bold text-primary">520 EcoPoints</span>
+</div>
+<!-- Notification Trigger -->
+<button aria-label="Notifications" class="p-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="w-2 h-2 rounded-full bg-error absolute top-2 right-2 ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant opacity-40"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-3 pl-1">
+<div class="relative w-9 h-9 rounded-full ring-2 ring-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of municipal field sustainability coordinator Amara Diallo wearing a clean dark green eco work jacket against a bright architectural studio background, soft natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7GQTY2qK-KfvOCJdPE79YH0SmETTIYSDNtb1QYGS6QcIzVJSluJyxbTcZiunYVZb-0KCtZ3uvDcPrsqZkdddgEZ5VnpxmWkBbIJbUjPmCKvXA3Y2oILpGOU2q-RzODPLO-F-V3iBwSaif3WSvrZZXv4RNbKIi7AfHFtABPS-Ccg6VcRjc2spuYFFlvvg2W-gQkb9FCKBIf0ZUq9iFaBCt9YFTpjsLBy9b8pRPFzbrAaqze_oO3i-x">
+</div>
+<div class="hidden lg:block text-left">
+<p class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Amara Diallo</p>
+<p class="font-label-sm text-label-sm text-outline">Sector Inspector</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-6 py-8">
+<!-- Page Header & Call to Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-2 font-label-md text-label-md text-outline mb-1">
+<span class="">Waste Logistics Operations</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right" style="font-size: 14px;">chevron_right</span>
+<span class="text-primary font-semibold">Field Submissions</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">My Submitted Reports</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Track real-time municipal inspection, truck dispatch, and resolution status.</p>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-3">
+<button class="bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-outline-variant/40 px-4 py-2 rounded-lg font-label-lg text-label-lg flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+<span class="">Sync Status</span>
+</button>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-5 py-2.5 rounded-lg font-label-lg text-label-lg font-semibold flex items-center gap-2 shadow-sm transition-all hover:-translate-y-0.5">
+<span class="material-symbols-outlined" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="">+ New Report</span>
+</button>
+</div>
+</div>
+<!-- Summary Metric Bar (4-Card Metric Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+<!-- Total Reports Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 custom-soft-shadow border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-md text-label-md text-outline font-medium">Total Reports</span>
+<span class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Live Sync
+          </span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-display-mobile text-display-mobile font-bold text-on-surface">5</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-primary" data-icon="done_all" style="font-size: 16px;">done_all</span>
+            100% logged
+          </span>
+</div>
+</div>
+<!-- Pending Reports Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 custom-soft-shadow border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-md text-label-md text-outline font-medium">Pending Review</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-sm text-label-sm font-semibold">2 Awaiting</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-display-mobile text-display-mobile font-bold text-amber-700">2</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Avg response: 4h</span>
+</div>
+</div>
+<!-- In Progress Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 custom-soft-shadow border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-md text-label-md text-outline font-medium">In Progress</span>
+<span class="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 font-label-sm text-label-sm font-semibold">1 Active Truck</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-display-mobile text-display-mobile font-bold text-tertiary">1</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary" data-icon="local_shipping" style="font-size: 16px;">local_shipping</span>
+            Truck #402
+          </span>
+</div>
+</div>
+<!-- Resolved Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 custom-soft-shadow border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-md text-label-md text-outline font-medium">Resolved &amp; Diverted</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">40% Clearance</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-display-mobile text-display-mobile font-bold text-primary">2</span>
+<span class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-primary" data-icon="eco" style="font-size: 16px;">eco</span>
+            +50 Pts earned
+          </span>
+</div>
+</div>
+</div>
+<!-- Filtering, Search & Control Toolbar -->
+<div class="bg-surface-container-lowest rounded-xl p-4 custom-soft-shadow border border-outline-variant/20 mb-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Segmented Filter Tabs -->
+<div class="inline-flex p-1 bg-surface-container rounded-lg self-start">
+<button class="bg-surface-container-lowest text-on-surface shadow-sm font-label-md text-label-md font-semibold px-4 py-1.5 rounded-md transition-all">
+          All <span class="ml-1 text-primary">5</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md px-4 py-1.5 rounded-md transition-colors">
+          Pending <span class="ml-1 text-outline">2</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md px-4 py-1.5 rounded-md transition-colors">
+          In Progress <span class="ml-1 text-outline">1</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md px-4 py-1.5 rounded-md transition-colors">
+          Resolved <span class="ml-1 text-outline">2</span>
+</button>
+</div>
+<!-- Search, Date Filter & Export Row -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Search Input -->
+<div class="relative min-w-[260px] sm:min-w-[320px]">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-lg pointer-events-none" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/50 focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface text-body-md font-body-md rounded-lg pl-9 pr-3 py-2 outline-none transition-all placeholder:text-outline/70" placeholder="Search reports by ID, location, or waste type..." type="text">
+</div>
+<!-- Date Range Filter Pill -->
+<div class="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/50 px-3 py-2 rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-container cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today" style="font-size: 18px;">calendar_today</span>
+<span class="">Sep 2026 (Recent)</span>
+<span class="material-symbols-outlined text-outline" data-icon="expand_more" style="font-size: 18px;">expand_more</span>
+</div>
+<!-- Export CSV Button -->
+<button class="flex items-center gap-2 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/50 px-3.5 py-2 rounded-lg text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="download" style="font-size: 18px;">download</span>
+<span class="">Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Main Content Layout: Table with Integrated Slide-Over Timeline Drawer -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- Desktop Data Table Container (Spans 8 columns on large desktop, leaving 4 for detail drawer) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-xl custom-soft-shadow border border-outline-variant/20 overflow-hidden">
+<div class="px-6 py-4 border-b border-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-title-md text-title-md font-bold text-on-surface">Submitted Logs</h2>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full font-semibold">5 records</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Sorted by newest first</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm border-b border-surface-container">
+<th class="py-3 px-4 font-semibold">Report ID &amp; Type</th>
+<th class="py-3 px-4 font-semibold">Location</th>
+<th class="py-3 px-4 font-semibold">Date Logged</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+<th class="py-3 px-4 font-semibold">Municipal Action</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm">
+<!-- Row 1: ECO-2024-001 (Resolved) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer bg-surface-container-lowest">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0 border border-teal-200">
+<span class="material-symbols-outlined" data-icon="recycling" style="font-size: 20px;">recycling</span>
+</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-surface">Plastic Waste</p>
+<p class="font-label-sm text-label-sm text-outline font-mono">ECO-2024-001</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline" data-icon="location_on" style="font-size: 16px;">location_on</span>
+<span class="">Main Street Zone 3</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Sep 26, 2026</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Resolved
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-medium text-primary">
+<span class="inline-flex items-center gap-1 bg-secondary-container/60 text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">
+<span class="material-symbols-outlined" data-icon="stars" style="font-size: 14px;">stars</span>
+                    +25 EcoPoints credited
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-primary hover:text-primary-container font-label-md text-label-md font-semibold px-2.5 py-1 rounded hover:bg-secondary-container/40 transition-colors">
+                    View Details
+                  </button>
+</td>
+</tr>
+<!-- Row 2: ECO-2024-002 (In Progress) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer bg-surface-container-low/20">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-sky-50 text-tertiary flex items-center justify-center shrink-0 border border-sky-200">
+<span class="material-symbols-outlined" data-icon="memory" style="font-size: 20px;">memory</span>
+</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-surface">Electronic Waste (E-Waste)</p>
+<p class="font-label-sm text-label-sm text-outline font-mono">ECO-2024-002</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline" data-icon="location_on" style="font-size: 16px;">location_on</span>
+<span class="">Pine Ave Station</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Sep 25, 2026</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-600 animate-pulse"></span>
+                    In Progress
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined" data-icon="local_shipping" style="font-size: 16px;">local_shipping</span>
+                    Truck #402 en route
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-primary hover:text-primary-container font-label-md text-label-md font-semibold px-2.5 py-1 rounded hover:bg-secondary-container/40 transition-colors">
+                    View Details
+                  </button>
+</td>
+</tr>
+<!-- Row 3: ECO-2024-003 (Pending) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer bg-surface-container-lowest">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-red-50 text-red-700 flex items-center justify-center shrink-0 border border-red-200">
+<span class="material-symbols-outlined" data-icon="warning" style="font-size: 20px;">warning</span>
+</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-surface">Hazardous Chemical</p>
+<p class="font-label-sm text-label-sm text-outline font-mono">ECO-2024-003</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline" data-icon="location_on" style="font-size: 16px;">location_on</span>
+<span class="">Industrial Park Sector B</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Sep 25, 2026</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline font-label-sm text-label-sm">
+                  Under municipal review
+                </td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-primary hover:text-primary-container font-label-md text-label-md font-semibold px-2.5 py-1 rounded hover:bg-secondary-container/40 transition-colors">
+                    View Details
+                  </button>
+</td>
+</tr>
+<!-- Row 4: ECO-2024-004 (Pending) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer bg-surface-container-lowest">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-lime-50 text-lime-700 flex items-center justify-center shrink-0 border border-lime-200">
+<span class="material-symbols-outlined" data-icon="compost" style="font-size: 20px;">compost</span>
+</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-surface">Organic Compost Overflow</p>
+<p class="font-label-sm text-label-sm text-outline font-mono">ECO-2024-004</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline" data-icon="location_on" style="font-size: 16px;">location_on</span>
+<span class="">Central Community Park</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Sep 24, 2026</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline font-label-sm text-label-sm">
+                  Queued for dispatch
+                </td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-primary hover:text-primary-container font-label-md text-label-md font-semibold px-2.5 py-1 rounded hover:bg-secondary-container/40 transition-colors">
+                    View Details
+                  </button>
+</td>
+</tr>
+<!-- Row 5: ECO-2024-005 (Resolved) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer bg-surface-container-lowest">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-orange-50 text-orange-700 flex items-center justify-center shrink-0 border border-orange-200">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-size: 20px;">inventory_2</span>
+</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-surface">Cardboard &amp; Bulk Packaging</p>
+<p class="font-label-sm text-label-sm text-outline font-mono">ECO-2024-005</p>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline" data-icon="location_on" style="font-size: 16px;">location_on</span>
+<span class="">Oakridge Quarter</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Sep 22, 2026</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Resolved
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-medium text-primary">
+<span class="inline-flex items-center gap-1 bg-secondary-container/60 text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">
+<span class="material-symbols-outlined" data-icon="stars" style="font-size: 14px;">stars</span>
+                    +25 EcoPoints credited
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-primary hover:text-primary-container font-label-md text-label-md font-semibold px-2.5 py-1 rounded hover:bg-secondary-container/40 transition-colors">
+                    View Details
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="px-6 py-3 border-t border-surface-container bg-surface-container-lowest flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="">Showing 1 to 5 of 5 reports</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded text-outline-variant cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-semibold">1</span>
+<button class="p-1 rounded text-outline-variant cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Preview & Live Timeline Panel (4 columns desktop) -->
+<div class="xl:col-span-4 bg-surface-container-lowest rounded-xl custom-soft-shadow border border-outline-variant/20 p-5 flex flex-col gap-5">
+<!-- Header & Active Selection Pill -->
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Live Inspection Drawer</span>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">ECO-2024-002</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-600 animate-pulse"></span>
+            In Progress
+          </span>
+</div>
+<!-- Thumbnail Photo Preview of Active Issue -->
+<div>
+<p class="font-label-md text-label-md font-medium text-outline mb-2">Logged Site Photo</p>
+<div class="relative rounded-lg overflow-hidden h-40 border border-outline-variant/30 group">
+<img class="w-full h-full object-cover" data-alt="High-resolution documentary photograph of discarded electronics and desktop circuit boards stacked neatly near a public collection point at Pine Ave Station under overcast morning lighting, sharp clean municipal perspective." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB71whjTtg6dUKLW8ZqdXTna3pAG66EnAFl1pPVIskfDAswgUhHHyc687wSxxNm4VS7FLdsvs5hzgbjPX0X6sUwpDd-zxAmwsIRclLz-MBYRmqr9_PMwGnyaTr2dj3A2IBtXXhOcCqIdB_SOnSmdYI_feZ7W4lrgEUc24Q_FIKidRl-gikHWy3kNEfUTJcj-iO03km-MkfPn2ZyGm-52JKMbRxElPkUS09LwAMYi2cwzk2niKJi84-J">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 to-transparent flex items-end p-3">
+<div class="text-inverse-on-surface">
+<p class="font-label-md text-label-md font-semibold">Pine Ave Station - Bay 4</p>
+<p class="font-label-sm text-label-sm opacity-80">GPS Lat 45.421, Long -75.698</p>
+</div>
+</div>
+<button class="absolute top-2 right-2 p-1.5 bg-surface-container-lowest/80 backdrop-blur rounded text-on-surface hover:text-primary">
+<span class="material-symbols-outlined" data-icon="open_in_full" style="font-size: 18px;">open_in_full</span>
+</button>
+</div>
+</div>
+<!-- Municipal Action Highlight Card -->
+<div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="material-symbols-outlined text-tertiary" data-icon="local_shipping">local_shipping</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">Dispatched Truck #402</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Driver assigned: K. Vane. Est. arrival in 18 minutes for high-yield circuit salvage and safe disposal.</p>
+</div>
+<!-- Report Status Timeline Breakdown -->
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-outline mb-3 uppercase tracking-wider">Resolution Timeline</h4>
+<div class="relative pl-6 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-highest">
+<!-- Timeline Item 1: Complete -->
+<div class="relative">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-on-primary" data-icon="check" style="font-size: 10px;">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Report Submitted</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Citizen Amara Diallo tagged waste with 2 photos.</p>
+<span class="font-label-sm text-label-sm text-outline">Sep 25, 2026 • 09:14 AM</span>
+</div>
+</div>
+<!-- Timeline Item 2: Complete -->
+<div class="relative">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-on-primary" data-icon="check" style="font-size: 10px;">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Municipal Verification</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automated computer vision classified as Grade-A E-Waste.</p>
+<span class="font-label-sm text-label-sm text-outline">Sep 25, 2026 • 09:28 AM</span>
+</div>
+</div>
+<!-- Timeline Item 3: Active In-Progress -->
+<div class="relative">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-tertiary flex items-center justify-center ring-4 ring-surface-container-lowest animate-pulse">
+<span class="w-1.5 h-1.5 bg-on-tertiary rounded-full"></span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-tertiary">Field Truck Dispatched</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vehicle #402 en route from Pine Facility Center.</p>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">Sep 25, 2026 • 10:05 AM (Current)</span>
+</div>
+</div>
+<!-- Timeline Item 4: Pending Target -->
+<div class="relative opacity-60">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-container-highest ring-4 ring-surface-container-lowest"></div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-outline">Verification &amp; EcoPoints Credit</p>
+<p class="font-body-sm text-body-sm text-outline">Scheduled clearance &amp; issuance of +30 EcoPoints.</p>
+<span class="font-label-sm text-label-sm text-outline">Estimated Today • 11:30 AM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Bottom Action Link -->
+<div class="pt-2 border-t border-surface-container flex items-center justify-between">
+<button class="text-outline hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined" data-icon="share" style="font-size: 16px;">share</span>
+<span class="">Share Report</span>
+</button>
+<a class="text-primary hover:text-primary-container font-label-md text-label-md font-semibold flex items-center gap-1" href="#">
+<span class="">Download PDF Audit</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Desktop Clean Global Footer -->
+<footer class="bg-surface-container-lowest border-t border-surface-container py-6 px-6 mt-12">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-outline font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-on-surface">EcoTrack Municipal System</span>
+<span class="">•</span>
+<span class="">Operational Clearance Division</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Incident Protocols</a>
+<a class="hover:text-primary transition-colors" href="#">Facility Directory</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Accountability</a>
+</div>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+</body></html>

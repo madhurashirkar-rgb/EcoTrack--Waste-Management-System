@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EcoTrack - My Reports</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#283044",
+            "inverse-on-surface": "#eef0ff",
+            "error-container": "#ffdad6",
+            "secondary": "#486554",
+            "on-primary-fixed-variant": "#005320",
+            "secondary-container": "#caead6",
+            "tertiary": "#006194",
+            "on-tertiary-fixed-variant": "#004b73",
+            "surface-dim": "#d2d9f4",
+            "on-secondary-fixed-variant": "#314d3e",
+            "primary-fixed-dim": "#62df7d",
+            "outline-variant": "#bdcaba",
+            "surface-container-low": "#f2f3ff",
+            "tertiary-fixed": "#cce5ff",
+            "surface-container-highest": "#dae2fd",
+            "on-secondary-container": "#4e6b5a",
+            "surface-variant": "#dae2fd",
+            "on-background": "#131b2e",
+            "on-surface-variant": "#3e4a3d",
+            "tertiary-container": "#007bb9",
+            "primary": "#006b2c",
+            "primary-fixed": "#7ffc97",
+            "on-error": "#ffffff",
+            "surface-container": "#eaedff",
+            "primary-container": "#00873a",
+            "surface-tint": "#006e2d",
+            "inverse-primary": "#62df7d",
+            "secondary-fixed-dim": "#afceba",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#001d31",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#042014",
+            "on-primary-fixed": "#002109",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "background": "#faf8ff",
+            "surface": "#faf8ff",
+            "on-surface": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "error": "#ba1a1a",
+            "tertiary-fixed-dim": "#93ccff",
+            "secondary-fixed": "#caead6",
+            "outline": "#6e7b6c",
+            "on-tertiary-container": "#fdfcff",
+            "surface-bright": "#faf8ff",
+            "on-primary-container": "#f7fff2",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter-mobile": "1rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "display-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "display": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "title-md": ["Inter"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "title-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for tab strip */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Mobile Screen Shell Simulation Container -->
+<main class="w-full max-w-md bg-surface min-h-screen relative pb-28 shadow-2xl flex flex-col overflow-hidden">
+<!-- 1. Header with Gradient & Organic Curvature -->
+<header class="relative bg-gradient-to-br from-[#15803d] to-[#16a34a] text-on-primary pt-3 pb-8 px-5 rounded-b-[2.5rem] shadow-md overflow-hidden">
+<!-- Decorative Organic Backdrops -->
+<div class="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+<div class="absolute -left-10 bottom-0 w-36 h-36 rounded-full bg-primary-fixed/20 blur-lg pointer-events-none"></div>
+<!-- Top Status Bar Simulation -->
+<div class="flex justify-between items-center text-xs font-semibold tracking-tight text-white/90 mb-4 px-1">
+<span>9:41</span>
+<div class="flex items-center gap-1.5 text-white/95">
+<span class="material-symbols-outlined text-[15px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[15px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[17px]" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+<!-- Top Nav Actions Row -->
+<div class="flex items-center justify-between relative z-10 mb-5">
+<button aria-label="Go back" class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-white font-bold tracking-tight">My Reports</h1>
+<button aria-label="Filter or Notifications" class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white active:scale-95 transition-transform relative">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-error rounded-full ring-2 ring-emerald-700"></span>
+</button>
+</div>
+<!-- Title Subtitle & Live Indicator -->
+<div class="flex items-center justify-between relative z-10 px-1">
+<div>
+<p class="font-body-sm text-body-sm text-emerald-100 font-medium">5 total reports submitted</p>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+<span>Live Sync</span>
+</div>
+</div>
+</header>
+<!-- 2. Summary / Stats Quick Strip -->
+<section class="px-4 -mt-4 relative z-20">
+<div class="bg-surface-container-lowest rounded-xl p-3 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.06)] border border-outline-variant/30 flex items-center justify-around divide-x divide-outline-variant/20">
+<div class="text-center px-2 flex-1">
+<span class="font-headline-sm text-headline-sm font-bold text-amber-700 leading-tight">2</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Pending</p>
+</div>
+<div class="text-center px-2 flex-1">
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary leading-tight">1</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">In Progress</p>
+</div>
+<div class="text-center px-2 flex-1">
+<span class="font-headline-sm text-headline-sm font-bold text-primary leading-tight">2</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Resolved</p>
+</div>
+</div>
+</section>
+<!-- 3. Filter Tabs (Horizontal Pill Selector) -->
+<nav aria-label="Report filter tabs" class="mt-4 px-4 overflow-x-auto no-scrollbar flex items-center gap-2 py-1">
+<!-- 'All' Tab (Active) -->
+<button class="bg-[#15803d] text-white font-label-md text-label-md font-semibold px-4 py-2 rounded-full shadow-sm flex items-center gap-1.5 shrink-0 transition-transform active:scale-95">
+<span>All</span>
+<span class="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center text-[10px] font-bold">5</span>
+</button>
+<!-- 'Pending' Tab -->
+<button class="bg-surface-container-lowest text-on-surface-variant border border-outline-variant/50 hover:bg-surface-container font-label-md text-label-md font-medium px-4 py-2 rounded-full flex items-center gap-2 shrink-0 transition-all active:scale-95">
+<span>Pending</span>
+<span class="px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">2</span>
+</button>
+<!-- 'In Progress' Tab -->
+<button class="bg-surface-container-lowest text-on-surface-variant border border-outline-variant/50 hover:bg-surface-container font-label-md text-label-md font-medium px-4 py-2 rounded-full flex items-center gap-2 shrink-0 transition-all active:scale-95">
+<span>In Progress</span>
+<span class="px-1.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold">1</span>
+</button>
+<!-- 'Resolved' Tab -->
+<button class="bg-surface-container-lowest text-on-surface-variant border border-outline-variant/50 hover:bg-surface-container font-label-md text-label-md font-medium px-4 py-2 rounded-full flex items-center gap-2 shrink-0 transition-all active:scale-95">
+<span>Resolved</span>
+<span class="px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">2</span>
+</button>
+</nav>
+<!-- 4. Report Cards List -->
+<section class="px-4 mt-4 space-y-3.5 flex-1">
+<!-- Card 1: Plastic Waste (Resolved) -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/30 flex items-start gap-3.5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.99]">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/60 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="recycling">recycling</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<h2 class="font-title-md text-title-md text-on-surface truncate">Plastic Waste</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              Resolved
+            </span>
+</div>
+<div class="flex items-center gap-2 text-outline font-mono text-[11px] mb-1.5">
+<span>ECO-2024-001</span>
+<span>•</span>
+<span>Sep 26, 2026</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[15px] text-outline shrink-0" data-icon="location_on">location_on</span>
+<span class="truncate">Main Street, Zone 3</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-primary font-label-sm text-label-sm font-semibold">
+<span class="flex items-center gap-1 text-emerald-700">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="eco">eco</span>
+              +25 EcoPoints credited
+            </span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</article>
+<!-- Card 2: E-Waste (In Progress) -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/30 flex items-start gap-3.5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.99]">
+<div class="w-12 h-12 rounded-xl bg-sky-100 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="devices">devices</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<h2 class="font-title-md text-title-md text-on-surface truncate">Electronic Waste (E-Waste)</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping"></span>
+              In Progress
+            </span>
+</div>
+<div class="flex items-center gap-2 text-outline font-mono text-[11px] mb-1.5">
+<span>ECO-2024-002</span>
+<span>•</span>
+<span>Sep 25, 2026</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[15px] text-outline shrink-0" data-icon="location_on">location_on</span>
+<span class="truncate">Pine Ave Station, Zone 3</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-tertiary font-label-sm text-label-sm font-medium">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+              Truck #402 en route
+            </span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</article>
+<!-- Card 3: Hazardous Runoff (Pending) -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/30 flex items-start gap-3.5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.99]">
+<div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="warning">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<h2 class="font-title-md text-title-md text-on-surface truncate">Hazardous Chemical Runoff</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]" data-icon="schedule">schedule</span>
+              Pending
+            </span>
+</div>
+<div class="flex items-center gap-2 text-outline font-mono text-[11px] mb-1.5">
+<span>ECO-2024-003</span>
+<span>•</span>
+<span>Sep 24, 2026</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[15px] text-outline shrink-0" data-icon="location_on">location_on</span>
+<span class="truncate">Industrial Park Road, Sector B</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="text-amber-800 font-medium">Under municipal review • Assigned Zone 4</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</article>
+<!-- Card 4: Organic Compost Overflow (Pending) -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/30 flex items-start gap-3.5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.99]">
+<div class="w-12 h-12 rounded-xl bg-lime-100 text-lime-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="compost">compost</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<h2 class="font-title-md text-title-md text-on-surface truncate">Organic Compost Overflow</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]" data-icon="schedule">schedule</span>
+              Pending
+            </span>
+</div>
+<div class="flex items-center gap-2 text-outline font-mono text-[11px] mb-1.5">
+<span>ECO-2024-004</span>
+<span>•</span>
+<span>Sep 22, 2026</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[15px] text-outline shrink-0" data-icon="location_on">location_on</span>
+<span class="truncate">Central Community Park</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="text-on-surface-variant font-medium">Inspection scheduled</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</article>
+<!-- Card 5: Cardboard & Bulk Paper Dump (Resolved) -->
+<article class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] border border-outline-variant/30 flex items-start gap-3.5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.99]">
+<div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<h2 class="font-title-md text-title-md text-on-surface truncate">Cardboard &amp; Bulk Paper Dump</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              Resolved
+            </span>
+</div>
+<div class="flex items-center gap-2 text-outline font-mono text-[11px] mb-1.5">
+<span>ECO-2024-005</span>
+<span>•</span>
+<span>Sep 19, 2026</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[15px] text-outline shrink-0" data-icon="location_on">location_on</span>
+<span class="truncate">Oakridge Quarter, Alley 4</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-primary font-label-sm text-label-sm font-semibold">
+<span class="flex items-center gap-1 text-emerald-700">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="eco">eco</span>
+              +25 EcoPoints credited
+            </span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</article>
+</section>
+<!-- 6. Mobile Persistent Bottom Navigation Bar -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 bg-surface-container-lowest/95 backdrop-blur-lg border-t border-outline-variant/20 shadow-[0_-4px_20px_-2px_rgba(15,23,42,0.06)] px-3 py-2 flex items-center justify-around">
+<!-- Tab: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors py-1 px-2 active:scale-95" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-medium">Home</span>
+</a>
+<!-- Tab: Map -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors py-1 px-2 active:scale-95" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="location_on">location_on</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-medium">Map</span>
+</a>
+<!-- Elevated Center Floating Action Button: Report Waste -->
+<div class="relative -top-5 flex flex-col items-center">
+<button aria-label="Submit new report" class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-primary-container text-on-primary shadow-lg shadow-primary/30 flex items-center justify-center active:scale-90 transition-transform focus:outline-none">
+<span class="material-symbols-outlined text-3xl font-bold" data-icon="add">add</span>
+</button>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold mt-1">Report</span>
+</div>
+<!-- Tab: Reports (Active Destination) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary py-1 px-2 active:scale-95" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-2xl fill" data-icon="report_problem" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full absolute -top-0.5 -right-0.5"></span>
+</div>
+<span class="font-label-sm text-label-sm mt-0.5 font-bold text-primary">Reports</span>
+</a>
+<!-- Tab: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors py-1 px-2 active:scale-95" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-medium">Profile</span>
+</a>
+</nav>
+</main>
+</body></html>
