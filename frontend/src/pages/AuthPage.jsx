@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { Shield, User, Lock, Mail, MapPin, CheckCircle2, AlertCircle, Eye, EyeOff, Sun, Moon } from 'lucide-react';
+import EcoTrackLogo from '../components/EcoTrackLogo';
 
 export default function AuthPage() {
   const { login, signup } = useAuth();
@@ -73,7 +74,7 @@ export default function AuthPage() {
   const fillAdminCredentials = () => {
     setMode('login');
     setLoginEmail('admin@ecotrack.org');
-    setLoginPassword('admin@123');
+    setLoginPassword('admin123');
     setError('');
   };
 
@@ -96,19 +97,7 @@ export default function AuthPage() {
 
           <div className="relative z-10 space-y-6">
             {/* Brand Logo & Name */}
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl overflow-hidden bg-surface-container-lowest p-1 shadow-xs border border-secondary-fixed flex items-center justify-center">
-                <img 
-                  alt="EcoTrack Logo" 
-                  className="w-full h-full object-contain" 
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1Wfcx_85b31r1AC0gmoC8qRSugsjtIo51xZml7OPQzEu02kx4VQJgJupnm_Y-Y1_WTOXp1zFlDThrVk4A-yyAR3uYQ3rNDQKBLHjimcBVRuinkzRe9hgDKcILSxwp8xUn77AmPg8KzSLqavR6mDTL16YnxTtDaRtOLJNf4amMpFm-Gn7hIEpsADETBpuQEHQEe-yYN7saUyEEITchcaDTsN0enhFf6K_F3i6UuCP62yK0F8RH_dzM00gZI"
-                />
-              </div>
-              <div>
-                <span className="font-bold text-xl text-primary tracking-tight">EcoTrack</span>
-                <span className="block text-xs font-semibold text-outline">Municipal Portal</span>
-              </div>
-            </div>
+            <EcoTrackLogo className="w-11 h-11" showText={true} subtitle="Waste Management System" />
 
             {/* Live Indicator */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest border border-secondary-fixed text-primary text-xs font-semibold shadow-xs">
@@ -240,7 +229,7 @@ export default function AuthPage() {
                         <span>Sanitation Admin</span>
                       </div>
                       <span className="text-[10px] text-on-surface-variant font-mono mt-0.5">admin@ecotrack.org</span>
-                      <span className="text-[10px] text-primary/70 font-mono">Pass: admin@123</span>
+                      <span className="text-[10px] text-primary/70 font-mono">Pass: admin123</span>
                     </button>
 
                     <button

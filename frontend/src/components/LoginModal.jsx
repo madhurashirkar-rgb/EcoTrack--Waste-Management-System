@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import EcoTrackLogo from './EcoTrackLogo';
 
 export default function LoginModal({ isOpen, onClose }) {
   const { login, signup, switchDemoRole } = useAuth();
@@ -38,7 +39,7 @@ export default function LoginModal({ isOpen, onClose }) {
       setPassword('password123');
     } else {
       setEmail('admin@ecotrack.org');
-      setPassword('admin@123');
+      setPassword('admin123');
     }
   };
 
@@ -52,19 +53,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <div className="absolute -bottom-20 -right-20 w-48 h-48 rounded-full bg-primary-fixed opacity-30 blur-2xl pointer-events-none"></div>
 
           <div className="relative z-10 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden bg-surface-container-lowest p-1 shadow-xs border border-secondary-fixed flex items-center justify-center">
-                <img 
-                  alt="EcoTrack Logo" 
-                  className="w-full h-full object-contain" 
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1Wfcx_85b31r1AC0gmoC8qRSugsjtIo51xZml7OPQzEu02kx4VQJgJupnm_Y-Y1_WTOXp1zFlDThrVk4A-yyAR3uYQ3rNDQKBLHjimcBVRuinkzRe9hgDKcILSxwp8xUn77AmPg8KzSLqavR6mDTL16YnxTtDaRtOLJNf4amMpFm-Gn7hIEpsADETBpuQEHQEe-yYN7saUyEEITchcaDTsN0enhFf6K_F3i6UuCP62yK0F8RH_dzM00gZI"
-                />
-              </div>
-              <div>
-                <span className="font-bold text-lg text-primary tracking-tight">EcoTrack</span>
-                <span className="block text-[11px] text-outline">Municipal Portal</span>
-              </div>
-            </div>
+            <EcoTrackLogo className="w-10 h-10" showText={true} subtitle="Waste Management System" />
 
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest border border-secondary-fixed text-primary text-xs font-semibold shadow-xs">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -164,7 +153,7 @@ export default function LoginModal({ isOpen, onClose }) {
               <div className="mt-2.5 pt-2 border-t border-surface-container-high/60 flex flex-col gap-1 text-[11px] text-on-surface-variant">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-on-surface">Officer (Admin):</span>
-                  <span className="font-mono bg-surface-container px-1.5 py-0.5 rounded text-primary">admin@ecotrack.org / admin@123</span>
+                  <span className="font-mono bg-surface-container px-1.5 py-0.5 rounded text-primary">admin@ecotrack.org / admin123</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-on-surface">Citizen:</span>

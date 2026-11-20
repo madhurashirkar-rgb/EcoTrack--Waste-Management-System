@@ -3,7 +3,7 @@ import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
 export default function Dashboard({ setActiveTab, onSelectReport }) {
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, ecoPoints } = useAuth();
   const [stats, setStats] = useState(null);
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +27,6 @@ export default function Dashboard({ setActiveTab, onSelectReport }) {
   }, [user]);
 
   const userName = user?.name ? user.name.split(' ')[0] : (isAdmin ? 'Admin' : 'Alex');
-  const ecoPoints = user?.ecoPoints ?? stats?.ecoPoints ?? 340;
   const reportsCount = stats?.reportsSubmitted ?? (reports.length > 0 ? reports.length : 12);
   const wasteCollected = stats?.wasteCollected ?? 84;
 

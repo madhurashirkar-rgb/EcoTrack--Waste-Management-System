@@ -95,7 +95,22 @@ function handleOfflineFallback(endpoint, options = {}, originalError = null) {
     };
   }
 
-  // D. Generic safe return for other read endpoints
+  // D. User points fallback
+  if (endpoint === '/user/points' && options.body) {
+    try {
+      const { ecoPoints, pointsDelta } = JSON.parse(options.body);
+      return {
+        success: true,
+        data: {
+          ecoPoints: typeof ecoPoints === 'number' ? ecoPoints : 400
+        }
+      };
+    } catch {
+      return { success: true, data: { ecoPoints: 400 } };
+    }
+  }
+
+  // E. Generic safe return for other read endpoints
   return {
     success: true,
     data: []
@@ -224,7 +239,12 @@ export const api = {
 
   // User Profile
   user: {
-    getProfile: () => request('/user/profile')
+    getProfile: () => request('/user/profile'),
+    updatePoints: (pointsData) =>
+      request('/user/points', {
+        method: 'PATCH',
+        body: JSON.stringify(pointsData)
+      })
   },
 
   // Admin

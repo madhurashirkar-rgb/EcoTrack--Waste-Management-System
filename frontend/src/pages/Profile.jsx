@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { Sun, Moon, Monitor, Check } from 'lucide-react';
 
 export default function Profile({ setActiveTab }) {
-  const { user, logout } = useAuth();
+  const { user, logout, ecoPoints } = useAuth();
   const { theme, setTheme } = useTheme();
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(user?.name || 'Alex Rivera');
@@ -36,6 +36,10 @@ export default function Profile({ setActiveTab }) {
           </div>
 
           <div className="w-full pt-4 border-t border-surface-container-high text-left space-y-3">
+            <div className="flex justify-between text-xs">
+              <span className="text-on-surface-variant">EcoPoints Balance</span>
+              <span className="font-bold text-primary">{ecoPoints} Pts</span>
+            </div>
             <div className="flex justify-between text-xs">
               <span className="text-on-surface-variant">Member Since</span>
               <span className="font-bold text-on-surface">March 2023</span>

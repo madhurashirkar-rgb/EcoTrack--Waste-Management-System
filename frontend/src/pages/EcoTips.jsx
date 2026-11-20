@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 export default function EcoTips() {
-  const { user } = useAuth();
-  const [points, setPoints] = useState(user?.ecoPoints ?? 340);
-  const [claimedTips, setClaimedTips] = useState({});
+  const { user, ecoPoints, addEcoPoints } = useAuth();
+  const [claimedTips, setClaimedTips] = useState(() => {
+    try {
+      const saved = localStorage.getItem('ecotrack_claimed_tips');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
   const [redeemedVoucher, setRedeemedVoucher] = useState(null);
 
   const tips = [
@@ -58,15 +64,19 @@ export default function EcoTips() {
     }
   ];
 
+  const points = ecoPoints;
+
   const handleClaimTip = (tipId, rewardPts) => {
     if (claimedTips[tipId]) return;
-    setPoints(prev => prev + rewardPts);
-    setClaimedTips(prev => ({ ...prev, [tipId]: true }));
+    const nextClaimed = { ...claimedTips, [tipId]: true };
+    setClaimedTips(nextClaimed);
+    localStorage.setItem('ecotrack_claimed_tips', JSON.stringify(nextClaimed));
+    addEcoPoints(rewardPts);
   };
 
   const handleRedeem = (reward) => {
     if (points >= reward.cost) {
-      setPoints(prev => prev - reward.cost);
+      addEcoPoints(-reward.cost);
       setRedeemedVoucher({
         title: reward.title,
         code: `ECO-${Math.random().toString(36).substring(2, 8).toUpperCase()}`,

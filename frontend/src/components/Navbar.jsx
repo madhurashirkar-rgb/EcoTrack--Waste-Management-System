@@ -2,9 +2,10 @@ import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { Shield, LogOut, User, Sun, Moon } from 'lucide-react';
+import EcoTrackLogo from './EcoTrackLogo';
 
 export default function Navbar({ activeTab, setActiveTab }) {
-  const { user, isAdmin, logout } = useAuth();
+  const { user, isAdmin, logout, ecoPoints } = useAuth();
   const { theme, isDark, toggleTheme } = useTheme();
 
   const citizenNavItems = [
@@ -21,7 +22,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
   ];
 
   const navItems = isAdmin ? adminNavItems : citizenNavItems;
-  const points = user?.ecoPoints ?? 340;
+  const points = ecoPoints;
 
   return (
     <header className="sticky top-0 z-40 bg-surface-container-lowest border-b border-surface-container-high shadow-xs backdrop-blur-md">
@@ -31,26 +32,12 @@ export default function Navbar({ activeTab, setActiveTab }) {
           className="flex items-center gap-3 cursor-pointer group" 
           onClick={() => setActiveTab(isAdmin ? 'admin' : 'dashboard')}
         >
-          <div className="w-9 h-9 rounded-lg overflow-hidden bg-primary/10 flex items-center justify-center p-1 border border-secondary-fixed">
-            <img 
-              alt="EcoTrack Logo" 
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform" 
-              src="https://lh3.googleusercontent.com/aida/AEtjO1Wfcx_85b31r1AC0gmoC8qRSugsjtIo51xZml7OPQzEu02kx4VQJgJupnm_Y-Y1_WTOXp1zFlDThrVk4A-yyAR3uYQ3rNDQKBLHjimcBVRuinkzRe9hgDKcILSxwp8xUn77AmPg8KzSLqavR6mDTL16YnxTtDaRtOLJNf4amMpFm-Gn7hIEpsADETBpuQEHQEe-yYN7saUyEEITchcaDTsN0enhFf6K_F3i6UuCP62yK0F8RH_dzM00gZI"
-            />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-lg text-primary tracking-tight">EcoTrack</span>
-              {isAdmin && (
-                <span className="text-[10px] uppercase font-bold tracking-wider bg-primary text-on-primary px-1.5 py-0.2 rounded">
-                  Admin
-                </span>
-              )}
-            </div>
-            <span className="text-[10px] uppercase font-bold tracking-wider text-outline -mt-1 hidden sm:block">
-              {isAdmin ? 'Command Center' : 'Municipal Portal'}
-            </span>
-          </div>
+          <EcoTrackLogo 
+            className="w-9 h-9" 
+            showText={true} 
+            isAdmin={isAdmin} 
+            subtitle={isAdmin ? 'Command Center' : 'Waste Management System'} 
+          />
         </div>
 
         {/* Desktop Navigation Links */}

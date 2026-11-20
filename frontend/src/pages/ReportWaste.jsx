@@ -3,7 +3,7 @@ import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
 export default function ReportWaste({ setActiveTab, onReportCreated }) {
-  const { user } = useAuth();
+  const { user, addEcoPoints, updateEcoPoints } = useAuth();
   const [wasteType, setWasteType] = useState('Plastic & Containers');
   const [urgency, setUrgency] = useState('Normal');
   const [location, setLocation] = useState('442 River Street, Corner of 9th Ave');
@@ -50,6 +50,12 @@ export default function ReportWaste({ setActiveTab, onReportCreated }) {
       const newReport = res.data?.report || res.data;
       setSuccessTicket(newReport.id || 'EC-2024-998');
 
+      if (typeof res.data?.totalEcoPoints === 'number') {
+        updateEcoPoints(res.data.totalEcoPoints);
+      } else {
+        addEcoPoints(25);
+      }
+
       if (onReportCreated) {
         onReportCreated(newReport);
       }
@@ -57,6 +63,7 @@ export default function ReportWaste({ setActiveTab, onReportCreated }) {
       console.error('Error submitting report:', err);
       // Fallback simulated success if offline
       setSuccessTicket(`EC-2026-${Math.floor(100 + Math.random() * 900)}`);
+      addEcoPoints(25);
     } finally {
       setSubmitting(false);
     }
