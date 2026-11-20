@@ -148,22 +148,22 @@ router.post('/', authenticateToken, (req, res) => {
     // Save report
     db.reports.create(newReport);
 
-    // Award +50 EcoPoints to user
+    // Award +25 EcoPoints to user
     const currentPoints = req.user.ecoPoints || 0;
     const updatedUser = db.users.update(req.user.id, {
-      ecoPoints: currentPoints + 50
+      ecoPoints: currentPoints + 25
     });
 
     return res.status(201).json({
       success: true,
-      message: 'Waste report submitted successfully! You earned +50 EcoPoints.',
+      message: 'Waste report submitted successfully! You earned +25 EcoPoints.',
       data: {
         report: {
           ...newReport,
           statusProgression: getStatusProgression(newReport)
         },
-        ecoPointsEarned: 50,
-        totalEcoPoints: updatedUser ? updatedUser.ecoPoints : currentPoints + 50
+        ecoPointsEarned: 25,
+        totalEcoPoints: updatedUser ? updatedUser.ecoPoints : currentPoints + 25
       }
     });
   } catch (error) {

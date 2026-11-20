@@ -64,4 +64,40 @@ router.get('/profile', authenticateToken, (req, res) => {
   }
 });
 
+// PATCH /api/user/points
+router.patch('/points', authenticateToken, (req, res) => {
+  try {
+    const { ecoPoints, pointsDelta } = req.body;
+    const user = db.users.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found.' });
+    }
+
+    let newPoints = user.ecoPoints || 0;
+    if (typeof ecoPoints === 'number') {
+      newPoints = Math.max(0, Math.round(ecoPoints));
+    } else if (typeof pointsDelta === 'number') {
+      newPoints = Math.max(0, Math.round(newPoints + pointsDelta));
+    }
+
+    const updated = db.users.update(user.id, { ecoPoints: newPoints });
+    const { password, ...safeUser } = updated;
+
+    return res.json({
+      success: true,
+      message: 'EcoPoints balance updated successfully.',
+      data: {
+        user: safeUser,
+        ecoPoints: newPoints
+      }
+    });
+  } catch (error) {
+    console.error('Update points error:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to update EcoPoints.'
+    });
+  }
+});
+
 module.exports = router;

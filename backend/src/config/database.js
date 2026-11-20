@@ -14,7 +14,7 @@ if (!fs.existsSync(DATA_DIR)) {
 function getInitialData() {
   const salt = bcrypt.genSaltSync(10);
   const userPasswordHash = bcrypt.hashSync('password123', salt);
-  const adminPasswordHash = bcrypt.hashSync('admin@123', salt);
+  const adminPasswordHash = bcrypt.hashSync('admin123', salt);
 
   return {
     users: [
@@ -237,10 +237,10 @@ function loadDatabase() {
     try {
       const data = fs.readFileSync(DB_FILE, 'utf-8');
       dbCache = JSON.parse(data);
-      // Ensure admin@ecotrack.org is present with admin@123
+      // Ensure admin@ecotrack.org is present with admin123
       const adminUser = dbCache.users.find((u) => u.email.toLowerCase() === 'admin@ecotrack.org' || u.email.toLowerCase() === 'admin@ecotrack.com' || u.id === 'usr-admin');
       const salt = bcrypt.genSaltSync(10);
-      const adminPasswordHash = bcrypt.hashSync('admin@123', salt);
+      const adminPasswordHash = bcrypt.hashSync('admin123', salt);
       if (!adminUser) {
         dbCache.users.push({
           id: 'usr-admin',
@@ -255,7 +255,7 @@ function loadDatabase() {
         });
         saveDatabase();
       } else {
-        // Guarantee email is admin@ecotrack.org and password matches admin@123
+        // Guarantee email is admin@ecotrack.org and password matches admin123
         adminUser.email = 'admin@ecotrack.org';
         adminUser.password = adminPasswordHash;
         adminUser.role = 'admin';
