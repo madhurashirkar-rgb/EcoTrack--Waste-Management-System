@@ -9,7 +9,6 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
     { key: 'Collected', label: 'Collected', icon: CheckCircle2, desc: 'Disposed & verified' },
   ];
 
-  // Derive current step index
   const normCurrent = (currentStatus || 'Pending').toLowerCase();
   let activeIndex = 0;
   if (normCurrent === 'pending' || normCurrent === 'reported') activeIndex = 0;
@@ -18,7 +17,7 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
   else if (normCurrent === 'collected' || normCurrent === 'resolved') activeIndex = 3;
 
   return (
-    <div className="py-4">
+    <div className="py-3">
       <div className="relative">
         {/* Mobile / Vertical view */}
         <div className="md:hidden space-y-6 relative pl-6 border-l-2 border-secondary-container ml-4">
@@ -26,9 +25,10 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
             const isCompleted = idx <= activeIndex;
             const isCurrent = idx === activeIndex;
             const historyItem = statusProgression.find(
-              (p) => (p.name || '').toLowerCase() === step.key.toLowerCase() ||
-                     (step.key === 'Reported' && (p.name || '').toLowerCase() === 'pending') ||
-                     (step.key === 'Collected' && (p.name || '').toLowerCase() === 'resolved')
+              (p) =>
+                (p.name || '').toLowerCase() === step.key.toLowerCase() ||
+                (step.key === 'Reported' && (p.name || '').toLowerCase() === 'pending') ||
+                (step.key === 'Collected' && (p.name || '').toLowerCase() === 'resolved')
             );
 
             return (
@@ -36,7 +36,7 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
                 <div
                   className={`absolute -left-[33px] top-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all shadow-sm ${
                     isCurrent
-                      ? 'bg-primary text-on-primary ring-4 ring-primary/20 ring-offset-1'
+                      ? 'bg-primary text-on-primary ring-4 ring-primary/25 shadow-neon'
                       : isCompleted
                       ? 'bg-primary text-on-primary'
                       : 'bg-surface-container-low border-2 border-outline-variant text-on-surface-variant'
@@ -46,16 +46,25 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
                 </div>
                 <div>
                   <div className="flex items-center justify-between">
-                    <h4 className={`text-sm font-semibold ${isCompleted ? 'text-on-surface' : 'text-on-surface-variant opacity-60'}`}>
+                    <h4
+                      className={`text-sm font-semibold ${
+                        isCompleted ? 'text-on-surface' : 'text-on-surface-variant opacity-60'
+                      }`}
+                    >
                       {step.label}
                     </h4>
                     {historyItem?.timestamp && (
-                      <span className="text-xs text-on-surface-variant">
-                        {new Date(historyItem.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                      <span className="text-xs font-mono text-on-surface-variant">
+                        {new Date(historyItem.timestamp).toLocaleDateString([], {
+                          month: 'short',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-on-surface-variant mt-0.5">
+                  <p className="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
                     {historyItem?.note || step.desc}
                   </p>
                 </div>
@@ -70,9 +79,10 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
             const isCompleted = idx <= activeIndex;
             const isCurrent = idx === activeIndex;
             const historyItem = statusProgression.find(
-              (p) => (p.name || '').toLowerCase() === step.key.toLowerCase() ||
-                     (step.key === 'Reported' && (p.name || '').toLowerCase() === 'pending') ||
-                     (step.key === 'Collected' && (p.name || '').toLowerCase() === 'resolved')
+              (p) =>
+                (p.name || '').toLowerCase() === step.key.toLowerCase() ||
+                (step.key === 'Reported' && (p.name || '').toLowerCase() === 'pending') ||
+                (step.key === 'Collected' && (p.name || '').toLowerCase() === 'resolved')
             );
 
             return (
@@ -80,7 +90,7 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
                 {/* Connecting Line */}
                 {idx > 0 && (
                   <div
-                    className={`absolute top-5 -left-1/2 w-full h-1 transition-colors duration-300 ${
+                    className={`absolute top-5 -left-1/2 w-full h-[2px] transition-colors duration-300 ${
                       idx <= activeIndex ? 'bg-primary' : 'bg-surface-container-high'
                     }`}
                     style={{ zIndex: 0 }}
@@ -89,30 +99,28 @@ export default function ReportTimeline({ statusProgression = [], currentStatus }
 
                 {/* Node Icon */}
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold relative z-10 transition-all shadow-sm ${
+                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold relative z-10 transition-all ${
                     isCurrent
-                      ? 'bg-primary text-on-primary ring-4 ring-primary/20 shadow-md scale-110'
+                      ? 'bg-primary text-on-primary ring-4 ring-primary/25 shadow-neon scale-110'
                       : isCompleted
                       ? 'bg-primary text-on-primary'
-                      : 'bg-surface-container-low border-2 border-outline-variant text-on-surface-variant'
+                      : 'bg-surface-container-low border border-surface-container-high text-on-surface-variant'
                   }`}
                 >
                   {isCompleted ? <Check className="w-5 h-5" /> : idx + 1}
                 </div>
 
-                {/* Text Info */}
-                <div className="text-center mt-3 max-w-[120px]">
-                  <p className={`text-xs font-bold ${isCompleted ? 'text-on-surface' : 'text-on-surface-variant opacity-60'}`}>
+                <div className="text-center mt-3 space-y-0.5">
+                  <h4
+                    className={`text-xs font-bold ${
+                      isCompleted ? 'text-on-surface' : 'text-on-surface-variant opacity-60'
+                    }`}
+                  >
                     {step.label}
+                  </h4>
+                  <p className="text-[11px] text-on-surface-variant max-w-[130px] leading-tight">
+                    {historyItem?.note || step.desc}
                   </p>
-                  <p className="text-[10px] text-on-surface-variant mt-0.5 line-clamp-1">
-                    {step.desc}
-                  </p>
-                  {historyItem?.timestamp && (
-                    <span className="text-[10px] text-primary block mt-1 font-medium bg-secondary-container px-1.5 py-0.5 rounded-full">
-                      {new Date(historyItem.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric' })}
-                    </span>
-                  )}
                 </div>
               </div>
             );

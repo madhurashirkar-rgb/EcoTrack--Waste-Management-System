@@ -87,9 +87,9 @@ function handleOfflineFallback(endpoint, options = {}, originalError = null) {
       success: true,
       data: {
         greeting: 'Welcome back!',
-        reportsSubmitted: 12,
-        wasteCollected: 84,
-        pendingReports: 2,
+        reportsSubmitted: 3,
+        wasteCollected: 1,
+        pendingReports: 1,
         ecoPoints: 400
       }
     };
@@ -98,7 +98,7 @@ function handleOfflineFallback(endpoint, options = {}, originalError = null) {
   // D. User points fallback
   if (endpoint === '/user/points' && options.body) {
     try {
-      const { ecoPoints, pointsDelta } = JSON.parse(options.body);
+      const { ecoPoints } = JSON.parse(options.body);
       return {
         success: true,
         data: {
@@ -110,7 +110,72 @@ function handleOfflineFallback(endpoint, options = {}, originalError = null) {
     }
   }
 
-  // E. Generic safe return for other read endpoints
+  // E. Reports fallback
+  if (endpoint.startsWith('/reports') || endpoint.startsWith('/report')) {
+    if (options.method === 'POST' && options.body) {
+      const body = JSON.parse(options.body);
+      return {
+        success: true,
+        data: {
+          report: {
+            id: `rep-${Date.now()}`,
+            ...body,
+            status: 'Pending',
+            date: new Date().toISOString(),
+            assignedTo: null,
+            history: [{ status: 'Pending', timestamp: new Date().toISOString(), note: 'Report logged offline.' }]
+          },
+          totalEcoPoints: 425
+        }
+      };
+    }
+    return {
+      success: true,
+      data: [
+        {
+          id: 'rep-101',
+          userId: 'usr-1',
+          userName: 'Alex Johnson',
+          wasteType: 'Plastic & Packaging',
+          urgency: 'Normal',
+          location: '5th St Alley & River Walk',
+          description: 'Discarded plastic shipping crates near recycling bay.',
+          status: 'In Progress',
+          date: new Date(Date.now() - 86400000).toISOString(),
+          assignedTo: 'EcoUnit #04 (Compactor)',
+          image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600&q=80'
+        },
+        {
+          id: 'rep-102',
+          userId: 'usr-1',
+          userName: 'Alex Johnson',
+          wasteType: 'Electronic / E-Waste',
+          urgency: 'Low',
+          location: 'Oakwood Blvd & 12th St',
+          description: 'Old CRT monitor and peripherals left beside utility pole.',
+          status: 'Collected',
+          date: new Date(Date.now() - 259200000).toISOString(),
+          assignedTo: 'Rapid Green Crew Beta',
+          image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80'
+        },
+        {
+          id: 'rep-103',
+          userId: 'usr-1',
+          userName: 'Alex Johnson',
+          wasteType: 'Dry / Recyclable',
+          urgency: 'Urgent Overflow',
+          location: 'Central Park Ave, West Pavilion',
+          description: 'Overflowing public dry waste bin after weekend market.',
+          status: 'Pending',
+          date: new Date(Date.now() - 7200000).toISOString(),
+          assignedTo: null,
+          image: 'https://images.unsplash.com/photo-1528323273322-d81458248d40?auto=format&fit=crop&w=800&q=80'
+        }
+      ]
+    };
+  }
+
+  // F. Generic safe return for other read endpoints
   return {
     success: true,
     data: []
@@ -202,9 +267,12 @@ export const api = {
 
   // Reports
   reports: {
-    getAll: (status) => {
-      const query = status && status !== 'All' ? `?status=${encodeURIComponent(status)}` : '';
-      return request(`/reports${query}`);
+    getAll: (status, all = false) => {
+      const params = new URLSearchParams();
+      if (status && status !== 'All') params.append('status', status);
+      if (all) params.append('all', 'true');
+      const qs = params.toString() ? `?${params.toString()}` : '';
+      return request(`/reports${qs}`);
     },
     getById: (id) => request(`/report/${id}`),
     create: (reportData) =>

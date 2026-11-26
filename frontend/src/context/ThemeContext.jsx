@@ -4,27 +4,26 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage first
     const saved = localStorage.getItem('ecotrack_theme');
     if (saved === 'dark' || saved === 'light' || saved === 'system') {
       return saved;
     }
-    return 'light'; // Default to bright mode
+    return 'dark'; // Default to Obsidian Bioluminescence neon mode
   });
 
   const [resolvedTheme, setResolvedTheme] = useState(() => {
     const saved = localStorage.getItem('ecotrack_theme');
-    if (saved === 'dark') return 'dark';
     if (saved === 'light') return 'light';
-    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
+    if (saved === 'dark') return 'dark';
+    if (saved === 'system' && typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const applyTheme = () => {
       let active = theme;
       if (theme === 'system') {
@@ -55,20 +54,22 @@ export function ThemeProvider({ children }) {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => {
+    setTheme((prev) => {
       const current = prev === 'system' ? resolvedTheme : prev;
       return current === 'dark' ? 'light' : 'dark';
     });
   };
 
   return (
-    <ThemeContext.Provider value={{
-      theme,
-      resolvedTheme,
-      isDark: resolvedTheme === 'dark',
-      toggleTheme,
-      setTheme
-    }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        resolvedTheme,
+        isDark: resolvedTheme === 'dark',
+        toggleTheme,
+        setTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

@@ -113,7 +113,7 @@ router.get('/:id', authenticateToken, (req, res) => {
 // POST /api/reports or /api/report
 router.post('/', authenticateToken, (req, res) => {
   try {
-    const { wasteType, location, description, image } = req.body;
+    const { wasteType, urgency, location, description, image } = req.body;
 
     // Validation
     if (!wasteType || !location || !description) {
@@ -129,6 +129,7 @@ router.post('/', authenticateToken, (req, res) => {
       userId: req.user.id,
       userName: req.user.name,
       wasteType: wasteType.trim(),
+      urgency: (urgency || 'Normal').trim(),
       location: location.trim(),
       description: description.trim(),
       image: image || 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600&q=80',

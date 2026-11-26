@@ -64,27 +64,33 @@ export default {
         "on-error-container": withOpacity("--color-on-error-container"),
 
         eco: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
-          950: '#052e16',
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          200: '#a7f3d0',
+          300: '#6ee7b7',
+          400: '#34d399',
+          500: '#00ff94',
+          600: '#00cc76',
+          700: '#059669',
+          800: '#065f46',
+          900: '#064e3b',
+          950: '#04140c',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
+      transitionTimingFunction: {
+        'expo': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       boxShadow: {
-        'card': '0 4px 20px -2px rgba(15, 23, 42, 0.05)',
-        'modal': '0 10px 25px -3px rgba(15, 23, 42, 0.08)',
+        'card': '0 4px 24px -4px rgba(0, 0, 0, 0.08)',
+        'modal': '0 24px 48px -12px rgba(0, 0, 0, 0.35)',
+        'neon': '0 0 20px rgba(0, 255, 148, 0.22), 0 0 4px rgba(0, 255, 148, 0.45)',
+        'neon-strong': '0 0 32px rgba(0, 255, 148, 0.35), 0 0 8px rgba(0, 229, 255, 0.25)',
       }
     },
   },
   plugins: [],
-}
+};

@@ -3,136 +3,265 @@
 @tailwind utilities;
 
 :root {
-  /* Bright / Light Mode Tokens (RGB triplets for Tailwind opacity support) */
-  --color-primary: 0 107 44; /* #006b2c */
-  --color-primary-container: 0 135 58; /* #00873a */
+  /* Botanical Daylight Mode (Editorial Clean & Mineral Greens) */
+  --color-primary: 0 135 79;               /* #00874F */
+  --color-primary-container: 0 110 64;     /* #006E40 */
   --color-on-primary: 255 255 255;
-  --color-on-primary-container: 247 255 242;
-  --color-primary-fixed: 127 252 151;
-  --color-primary-fixed-dim: 98 223 125;
-  --color-on-primary-fixed: 0 33 9;
-  --color-on-primary-fixed-variant: 0 83 32;
+  --color-on-primary-container: 240 253 246;
+  --color-primary-fixed: 167 243 208;
+  --color-primary-fixed-dim: 110 231 183;
+  --color-on-primary-fixed: 4 32 20;
+  --color-on-primary-fixed-variant: 6 95 70;
 
-  --color-secondary: 72 101 84; /* #486554 */
-  --color-secondary-container: 202 234 214; /* #caead6 */
-  --color-on-secondary-container: 78 107 90;
-  --color-secondary-fixed: 202 234 214;
-  --color-secondary-fixed-dim: 175 206 186;
+  --color-secondary: 16 185 129;           /* #10B981 */
+  --color-secondary-container: 209 250 229;
+  --color-on-secondary-container: 6 78 59;
+  --color-secondary-fixed: 167 243 208;
+  --color-secondary-fixed-dim: 110 231 183;
   --color-on-secondary-fixed: 4 32 20;
-  --color-on-secondary-fixed-variant: 49 77 62;
+  --color-on-secondary-fixed-variant: 6 95 70;
 
-  --color-tertiary: 0 97 148; /* #006194 */
-  --color-tertiary-container: 0 123 185;
-  --color-on-tertiary-container: 253 252 255;
-  --color-tertiary-fixed: 204 229 255;
-  --color-tertiary-fixed-dim: 147 204 255;
-  --color-on-tertiary-fixed: 0 29 49;
-  --color-on-tertiary-fixed-variant: 0 75 115;
+  --color-tertiary: 2 132 199;             /* #0284C7 */
+  --color-tertiary-container: 224 242 254;
+  --color-on-tertiary-container: 7 89 133;
+  --color-tertiary-fixed: 224 242 254;
+  --color-tertiary-fixed-dim: 125 211 252;
+  --color-on-tertiary-fixed: 12 74 110;
+  --color-on-tertiary-fixed-variant: 3 105 161;
 
-  --color-background: 250 248 255; /* #faf8ff */
-  --color-on-background: 19 27 46; /* #131b2e */
-  --color-surface: 250 248 255;
+  --color-background: 247 250 248;         /* #F7FAF8 */
+  --color-on-background: 11 25 19;         /* #0B1913 */
+  --color-surface: 247 250 248;
   --color-surface-bright: 255 255 255;
-  --color-surface-dim: 210 217 244;
-  --color-surface-variant: 218 226 253;
-  --color-surface-container-lowest: 255 255 255; /* #ffffff */
-  --color-surface-container-low: 242 243 255; /* #f2f3ff */
-  --color-surface-container: 234 237 255; /* #eaedff */
-  --color-surface-container-high: 226 231 255; /* #e2e7ff */
-  --color-surface-container-highest: 218 226 253;
-  --color-on-surface: 19 27 46; /* #131b2e */
-  --color-on-surface-variant: 62 74 61; /* #3e4a3d */
+  --color-surface-dim: 226 236 230;
+  --color-surface-variant: 220 232 225;
+  --color-surface-container-lowest: 255 255 255;
+  --color-surface-container-low: 240 246 242;
+  --color-surface-container: 230 239 234;
+  --color-surface-container-high: 213 227 219;
+  --color-surface-container-highest: 197 216 205;
+  --color-on-surface: 11 25 19;
+  --color-on-surface-variant: 71 96 84;
 
-  --color-outline: 110 123 108;
-  --color-outline-variant: 189 202 186;
+  --color-outline: 100 125 112;
+  --color-outline-variant: 194 214 203;
 
-  --color-error: 186 26 26;
-  --color-error-container: 255 218 214;
-  --color-on-error-container: 147 0 10;
+  --color-error: 220 38 38;
+  --color-error-container: 254 226 226;
+  --color-on-error-container: 153 27 27;
+
+  --neon-accent: rgba(0, 135, 79, 0.16);
+  --cyan-accent: rgba(2, 132, 199, 0.14);
 }
 
 .dark {
-  /* Dark Mode Tokens (Rich contrast, midnight slate aesthetics) */
-  --color-primary: 74 222 128; /* #4ade80 bright emerald */
-  --color-primary-container: 20 83 45; /* #14532d deep forest */
-  --color-on-primary: 5 46 22; /* #052e16 */
-  --color-on-primary-container: 187 247 208; /* #bbf7d0 */
-  --color-primary-fixed: 127 252 151;
-  --color-primary-fixed-dim: 98 223 125;
-  --color-on-primary-fixed: 0 33 9;
-  --color-on-primary-fixed-variant: 0 83 32;
+  /* Obsidian Bioluminescence Mode (Deep Carbon Obsidian + Neon Emerald & Cyber Cyan) */
+  --color-primary: 0 255 148;              /* #00FF94 Neon Bioluminescent Emerald */
+  --color-primary-container: 0 204 118;    /* #00CC76 */
+  --color-on-primary: 4 20 12;             /* #04140C Deep Ink on Neon */
+  --color-on-primary-container: 220 255 238;
+  --color-primary-fixed: 0 255 148;
+  --color-primary-fixed-dim: 0 185 108;
+  --color-on-primary-fixed: 4 20 12;
+  --color-on-primary-fixed-variant: 110 255 190;
 
-  --color-secondary: 134 239 172; /* #86efac */
-  --color-secondary-container: 26 56 40; /* #1a3828 */
-  --color-on-secondary-container: 187 247 208;
-  --color-secondary-fixed: 40 70 54;
-  --color-secondary-fixed-dim: 30 55 42;
-  --color-on-secondary-fixed: 202 234 214;
-  --color-on-secondary-fixed-variant: 175 206 186;
+  --color-secondary: 52 245 170;           /* #34F5AA */
+  --color-secondary-container: 10 43 29;   /* #0A2B1D */
+  --color-on-secondary-container: 158 255 214;
+  --color-secondary-fixed: 18 68 46;
+  --color-secondary-fixed-dim: 14 54 36;
+  --color-on-secondary-fixed: 209 250 229;
+  --color-on-secondary-fixed-variant: 110 255 190;
 
-  --color-tertiary: 56 189 248; /* #38bdf8 */
-  --color-tertiary-container: 7 89 133;
-  --color-on-tertiary-container: 224 242 254;
-  --color-tertiary-fixed: 14 165 233;
-  --color-tertiary-fixed-dim: 2 132 199;
-  --color-on-tertiary-fixed: 240 249 255;
-  --color-on-tertiary-fixed-variant: 186 230 253;
+  --color-tertiary: 0 229 255;             /* #00E5FF Cyber Cyan */
+  --color-tertiary-container: 6 48 64;
+  --color-on-tertiary-container: 165 243 252;
+  --color-tertiary-fixed: 10 46 58;
+  --color-tertiary-fixed-dim: 14 70 88;
+  --color-on-tertiary-fixed: 224 247 250;
+  --color-on-tertiary-fixed-variant: 103 232 249;
 
-  --color-background: 11 17 32; /* #0b1120 deep midnight navy */
-  --color-on-background: 241 245 249; /* #f1f5f9 */
-  --color-surface: 15 23 42; /* #0f172a slate-900 */
-  --color-surface-bright: 30 41 59; /* #1e293b */
-  --color-surface-dim: 11 17 32;
-  --color-surface-variant: 30 41 59;
-  --color-surface-container-lowest: 15 23 42; /* #0f172a card surface */
-  --color-surface-container-low: 22 32 51; /* #162033 secondary card */
-  --color-surface-container: 30 41 59; /* #1e293b active / input surface */
-  --color-surface-container-high: 38 53 74; /* #26354a border and dividers */
-  --color-surface-container-highest: 51 65 85; /* #334155 */
-  --color-on-surface: 248 250 252; /* #f8fafc */
-  --color-on-surface-variant: 148 163 184; /* #94a3b8 */
+  --color-background: 6 10 8;              /* #060A08 Obsidian Carbon */
+  --color-on-background: 240 253 246;
+  --color-surface: 10 16 13;               /* #0A100D */
+  --color-surface-bright: 17 27 22;        /* #111B16 */
+  --color-surface-dim: 5 8 6;
+  --color-surface-variant: 20 32 26;
+  --color-surface-container-lowest: 12 19 15;  /* #0C130F Card Surface */
+  --color-surface-container-low: 16 26 21;     /* #101A15 Secondary Surface */
+  --color-surface-container: 22 35 28;         /* #16231C Active Surface */
+  --color-surface-container-high: 32 50 40;    /* #203228 Crisp Hairline Border */
+  --color-surface-container-highest: 45 70 56; /* #2D4638 */
+  --color-on-surface: 240 253 246;             /* #F0FDF6 */
+  --color-on-surface-variant: 144 176 158;     /* #90B09E */
 
-  --color-outline: 100 116 139; /* #64748b */
-  --color-outline-variant: 51 65 85; /* #334155 */
+  --color-outline: 76 112 92;
+  --color-outline-variant: 34 56 44;
 
-  --color-error: 248 113 113; /* #f87171 */
-  --color-error-container: 127 29 29; /* #7f1d1d */
-  --color-on-error-container: 254 202 202; /* #fecaca */
+  --color-error: 255 92 122;               /* #FF5C7A */
+  --color-error-container: 64 16 28;
+  --color-on-error-container: 255 204 214;
+
+  --neon-accent: rgba(0, 255, 148, 0.25);
+  --cyan-accent: rgba(0, 229, 255, 0.2);
 }
 
 @layer base {
+  html {
+    font-family: 'Manrope', system-ui, sans-serif;
+    scroll-padding-top: 88px;
+  }
+
   body {
     background-color: rgb(var(--color-background));
     color: rgb(var(--color-on-surface));
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-}
+/* Typography System Tokens (landing-page-design B1) */
+.heading-1 { @apply text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.08]; }
+.heading-2 { @apply text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1]; }
+.heading-3 { @apply text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15]; }
+.heading-4 { @apply text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight leading-[1.2]; }
+.heading-5 { @apply text-xl sm:text-2xl font-semibold tracking-tight leading-8; }
+.heading-6 { @apply text-lg sm:text-xl font-semibold tracking-tight leading-7; }
+.title-2   { @apply text-lg font-medium leading-7; }
+.title-3   { @apply text-base font-medium leading-6; }
+.body-2    { @apply text-base font-medium leading-6; }
+.body-3    { @apply text-base font-normal leading-6; }
+.body-5    { @apply text-sm font-medium leading-5; }
+.body-6    { @apply text-sm font-normal leading-5; }
+.caption-1 { @apply text-sm font-medium leading-5; }
+.caption-3 { @apply text-xs font-semibold leading-4; }
+.caption-5 { @apply text-xs font-normal leading-4; }
 
+/* Neon Eco-Tech Card Surfaces & Glows */
 .custom-shadow-card {
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 24px -4px rgba(6, 20, 14, 0.06);
 }
 
 .dark .custom-shadow-card {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(0, 255, 148, 0.06);
 }
 
 .custom-shadow-modal {
-  box-shadow: 0 10px 25px -3px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 50px -12px rgba(6, 20, 14, 0.16);
 }
 
 .dark .custom-shadow-modal {
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 36px -8px rgba(0, 255, 148, 0.14);
 }
 
-/* Custom rounded scrollbar */
+.neon-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark .neon-card:hover {
+  border-color: rgba(0, 255, 148, 0.45);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.75), 0 0 24px -4px rgba(0, 255, 148, 0.16);
+}
+
+.light .neon-card:hover {
+  border-color: rgba(0, 135, 79, 0.38);
+  box-shadow: 0 12px 28px -8px rgba(0, 135, 79, 0.12);
+}
+
+.neon-btn {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.neon-btn:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgb(var(--color-primary));
+  outline-offset: 2px;
+}
+
+/* Tactile cursor spotlight sheen on interactive cards */
+.spotlight-card {
+  position: relative;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(0, 135, 79, 0.06),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .spotlight-card::before {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(0, 255, 148, 0.09),
+    transparent 65%
+  );
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.dark .neon-btn-primary {
+  box-shadow: 0 0 18px -2px rgba(0, 255, 148, 0.38);
+}
+
+.dark .neon-btn-primary:hover {
+  box-shadow: 0 0 28px 0px rgba(0, 255, 148, 0.58);
+}
+
+.neon-text-gradient {
+  background: linear-gradient(90deg, #0B1913 0%, #00874F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .neon-text-gradient {
+  background: linear-gradient(90deg, #FFFFFF 0%, #00FF94 60%, #00E5FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle Architectural Grid Pattern */
+.eco-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(0, 135, 79, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 135, 79, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark .eco-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 148, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 148, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Custom sleek scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -145,5 +274,13 @@
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--color-outline));
+  background: rgb(var(--color-primary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
